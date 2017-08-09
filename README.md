@@ -1,6 +1,8 @@
-## orange.js
+# orange.js
 
 >常用的函数封装
+
+***
 
 ### 生成随机字符串
 ```javascript
