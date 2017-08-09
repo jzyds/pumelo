@@ -29,6 +29,8 @@ var orange = {
                 return /^[a-z]+$/.test(str);
             case 'upper':
                 return /^[A-Z]+$/.test(str);
+            case 'ip':
+                return /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/.test(str);
             default :
                 return true;
         }
@@ -39,5 +41,15 @@ var orange = {
         var Range = Max - Min;   
         var Rand = Math.random();   
         return(Min + Math.round(Rand * Range));   
-    }  
+    },
+    
+    //数组排序
+    sortList: function (list,type){
+        if(type === 'fromBigToSmall'){
+            return list.sort(function(a,b){
+                return b-a;
+            })
+        }
+        return list.sort()
+    }
 };
