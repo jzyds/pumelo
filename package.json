@@ -1,0 +1,25 @@
+{
+  "name": "pumelo",
+  "version": "1.0.1",
+  "description": "javascript commonly used functions",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xq-li/pumelo.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "github.com/xq-li",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xq-li/pumelo/issues"
+  },
+  "homepage": "https://github.com/xq-li/pumelo#readme"
+}

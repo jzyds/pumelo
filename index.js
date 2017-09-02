@@ -1,1 +1,1 @@
-module.exports = require('./lib/pumelo.js')
+module.exports = require('./lib')

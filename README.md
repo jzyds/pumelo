@@ -1,8 +1,20 @@
-# Pumelo.js
+# pumelo
 
->常用的函数封装
+常用的函数封装
 
 ***
+
+## Installation
+```bash
+$ npm install pumelo --save
+```
+
+***
+
+## Usage
+```javascript
+var pumelo = require('pumelo')
+```
 
 ### 生成随机字符串
 ```javascript
