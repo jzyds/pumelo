@@ -58,3 +58,27 @@ pumelo.Ajax({
     }
 })
 ```
+
+### Base64加密
+```javascript
+let base64 = new pumelo.base64();
+//加密
+base64.encode("some string");
+
+//解密
+base64.decode(base64.encode("some string"));
+```
+
+### MD5加密
+```javascript
+let md5 = new pumelo.md5()
+//加密
+md5.hex_md5("some string")
+```
+
+### sha1加密
+```javascript
+let sha1 = new pumelo.sha1()
+//加密
+md5.hex_sha1("some string")
+```
