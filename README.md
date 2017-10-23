@@ -66,14 +66,14 @@ base64.encode("some string");
 base64.decode(base64.encode("some string"));
 ```
 
-### MD5加密
+### MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）
 ```javascript
 let md5 = new pumelo.md5()
 //加密
 md5.hex_md5("some string")
 ```
 
-### sha1加密
+### sha1加密（Secure Hash Algorithm ／ 安全哈希算法）
 ```javascript
 let sha1 = new pumelo.sha1()
 //加密
