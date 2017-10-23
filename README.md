@@ -44,19 +44,16 @@ pumelo.sort(list,'fromBigToSmall')
 ```javascript
 //调用：get || post
 pumelo.Ajax({
-    method:'post', // or 'get'
-    url:'http://localhost:3000/api/notes',
-    header: function(req){
-        req.setRequestHeader('Content-Type','application/json');
-        req.setRequestHeader('Accept', 'application/json');  
+    url: "url",
+    type: 'POST',   // 请求类型，默认"GET"
+    jsonp: 'jsonpCallbak', //jsonp回调函数，回调函数名为"jsonpCallbak"，可以设置为合法的字符串。添加此option会使用jsonp请求跨域数据
+    data: {
+        key1:'value1',
+        key2:'value2'
     },
-    data:JSON.stringify({
-        //key : value
-    }),
-    callback:function(res){
-        console.log(res)
-    }
-})
+    success: function (res) {},
+    error: function (error) {}
+});
 ```
 
 ### Base64加密
