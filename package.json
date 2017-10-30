@@ -1,7 +1,7 @@
 {
   "name": "pumelo",
-  "version": "1.0.5",
-  "description": "javascript commonly used functions",
+  "version": "1.0.6",
+  "description": "commonly used functions for javascript",
   "main": "index.js",
   "directories": {
     "lib": "lib"
