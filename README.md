@@ -37,6 +37,10 @@ $ cp pumelo.js $targetDirectory/
 
 
 ## Usage
+### 生成随机颜色
+```javascript
+pumelo.randomColor()
+```
 
 ### 生成随机字符串
 ```javascript
