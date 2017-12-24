@@ -2,39 +2,31 @@
 
 常用的JavaScript函数封装
 
-***
-
 ## Installation
-在NPM / Node中使用pumelo.js:
+
+The library is the single JavaScript file *pumelo.js* 
+
+Browser:
+
+```html
+<script src='lib/pumelo.js'></script>
+```
+
+[Node.js](http://nodejs.org):
+
 ```bash
 $ npm install pumelo --save
 ```
 
-```javascript
-//main.js
+```js
+var pumelo = require('pumelo');
+```
 
-const pumelo = require('pumelo')
-//or
+ES6 module:
+
+```js
 import pumelo from 'pumelo'
 ```
-
-*** 
-
-通过script标签引入pumelo.js:
-```bash
-# 提取pumelo.js
-$ git clone git@github.com:xq-li/pumelo.git
-$ cd pumelo/lib
-$ cp pumelo.js $targetDirectory/
-```
-
-```html
-<!-- index.html -->
-
-<script src="./pumelo.js"></script>
-<!-- 此时pumelo已被注册成一个全局对象 -->
-```
-
 
 ## Usage
 ### 生成随机颜色
