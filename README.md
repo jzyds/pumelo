@@ -30,34 +30,50 @@ import pumelo from 'pumelo'
 
 ## Usage
 
+### distinctValuesOfArray
+
+>Returns all the distinct values of an array.
+
+```js
+pumelo.distinctValuesOfArray([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
+```
+
 ### timeTaken
 
-Measures the time taken by a function to execute.
+>Measures the time taken by a function to execute.
 
 ```js
 pumelo.timeTaken(() => {Math.pow(2.10)})
 ```
 
-检查是否为undefined
+### isUndefined
+
+>检查是否为undefined
 
 ```javascript
 pumelo.isUndefined(obj)
 // return Boolean
 ```
 
-生成随机颜色
+### randomColor
+
+>生成随机颜色
 
 ```javascript
 pumelo.randomColor()
 ```
 
-生成随机字符串
+### randomString
+
+>生成随机字符串
 
 ```javascript
 pumelo.randomString(randomFlag, min, max)
 ```
 
-检查字符串类型
+### checkStringType
+
+>检查字符串类型
 
 ```javascript
 pumelo.checkStringType(str, type)
@@ -66,20 +82,23 @@ pumelo.checkStringType(str, type)
 // return Boolean
 ```
 
-生成随机数
+### randomNum
+
+>生成随机数
 
 ```javascript
 pumelo.randomNum(Min,Max)
 ```
 
-数组排序
+### quickSort
+
+>快速排序
 
 ```javascript
-pumelo.sort(list,'fromBigToSmall')
-// 第二个固定字符串为可选参数，如果带有该字符串，则按照从大到小排序。如果不带有该字符串，则按照从小到大排序。
+let result = pumelo.quickSort(arr)
 ```
 
-Ajax
+### Ajax
 
 ```javascript
 //调用：get || post
@@ -96,7 +115,9 @@ pumelo.Ajax({
 });
 ```
 
-Base64加密
+### base64
+
+>Base64加密
 
 ```javascript
 let base64 = new pumelo.base64();
@@ -107,7 +128,9 @@ base64.encode("some string");
 base64.decode(base64.encode("some string"));
 ```
 
-MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）
+### md5
+
+>MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）
 
 ```javascript
 let md5 = new pumelo.md5()
@@ -115,7 +138,9 @@ let md5 = new pumelo.md5()
 md5.hex_md5("some string")
 ```
 
-sha1加密（Secure Hash Algorithm ／ 安全哈希算法）
+### sha1
+
+>sha1加密（Secure Hash Algorithm ／ 安全哈希算法）
 
 ```javascript
 let sha1 = new pumelo.sha1()
