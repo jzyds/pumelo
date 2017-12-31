@@ -30,6 +30,14 @@ import pumelo from 'pumelo'
 
 ## Usage
 
+### timeTaken
+
+Measures the time taken by a function to execute.
+
+```js
+pumelo.timeTaken(() => {Math.pow(2.10)})
+```
+
 检查是否为undefined
 
 ```javascript
