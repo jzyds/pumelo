@@ -145,5 +145,5 @@ md5.hex_md5("some string")
 ```javascript
 let sha1 = new pumelo.sha1()
 //加密
-md5.hex_sha1("some string")
+sha1.hex_sha1("some string")
 ```
