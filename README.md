@@ -1,6 +1,6 @@
 # pumelo
 
-常用的JavaScript函数封装
+JavaScript工具箱
 
 ## Installation
 
@@ -46,15 +46,6 @@ pumelo.distinctValuesOfArray([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
 pumelo.timeTaken(() => {Math.pow(2.10)})
 ```
 
-### isUndefined
-
->检查是否为undefined
-
-```javascript
-pumelo.isUndefined(obj)
-// return Boolean
-```
-
 ### randomColor
 
 >生成随机颜色
@@ -68,7 +59,7 @@ pumelo.randomColor()
 >生成随机字符串
 
 ```javascript
-pumelo.randomString(randomFlag, min, max)
+pumelo.randomString(length)
 ```
 
 ### checkStringType
