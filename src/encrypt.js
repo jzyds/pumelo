@@ -1,4 +1,13 @@
-//base64
+/**
+ * Base64加密
+ * @returns {String}
+ * @example
+ * let base64 = new pumelo.base64();
+ * 加密
+ * base64.encode("some string");
+ * 解密
+ * base64.decode(base64.encode("some string"));
+ */
 module.exports.base64 = function () {
 
   // private property
@@ -103,8 +112,14 @@ module.exports.base64 = function () {
   }
 }
 
-
-//MD5
+/**
+ * MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）
+ * @returns {String}
+ * @example
+ * let md5 = new pumelo.md5()
+ * 加密
+ * md5.hex_md5("some string")
+ */
 module.exports.md5 = function () {
   var hexcase = 0;
   var b64pad = "";
@@ -318,7 +333,14 @@ module.exports.md5 = function () {
   }
 }
 
-//sha1
+/**
+ * sha1加密（Secure Hash Algorithm ／ 安全哈希算法）
+ * @returns {String}
+ * @example
+ * let sha1 = new pumelo.sha1()
+ * 加密
+ * sha1.hex_sha1("some string")
+ */
 module.exports.sha1 = function () {
   var hexcase = 0;
   var b64pad = "";

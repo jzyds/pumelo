@@ -1,5 +1,5 @@
 /**
- *
+ * find
  * @param {Array} arr
  * @param {Function} callback
  * @returns {*}
@@ -20,7 +20,7 @@ module.exports.find = function (arr, callback) {
 
 
 /**
- *
+ * every
  * @param {Array} arr
  * @param {Function} fn
  * @returns {Boolean}
@@ -37,7 +37,7 @@ module.exports.every = function (arr, fn) {
 }
 
 /**
- *
+ * some
  * @param {Array} arr
  * @param {Function} fn
  * @returns {Boolean}
@@ -52,7 +52,7 @@ module.exports.some = function (arr, fn) {
 }
 
 /**
- *
+ * once
  * @param {Function} fn
  * @returns {Function}
  */
@@ -80,6 +80,7 @@ module.exports.typeof = function (obj) {
 }
 
 /**
+ * isObj
  * @param {*} obj
  * @returns {Boolean}
  */
@@ -88,6 +89,7 @@ module.exports.isObj = function (obj) {
 }
 
 /**
+ * isArray
  * @param {*} obj
  * @returns {Boolean}
  */
@@ -95,8 +97,18 @@ module.exports.isArray = function (obj) {
 	return this.typeof(obj) === 'array';
 }
 
+/**
+ * Returns all the distinct values of an array.
+ * @param {Array} - source array
+ * @returns {Array} - new array
+ */
 module.exports.distinctValuesOfArray = (arr) => [...new Set(arr)];
 
+/**
+ * Measures the time taken by a function to execute.
+ * @param {Function} - callback function
+ * @returns {*}
+ */
 module.exports.timeTaken = function (callback) {
 	console.time('timeTaken');
 	const r = callback();
@@ -104,15 +116,18 @@ module.exports.timeTaken = function (callback) {
 	return r;
 }
 
-// random color
+/**
+ * 生成随机颜色
+ * @returns {String}
+ */
 module.exports.randomColor = function () {
 	let n = ((Math.random() * 0xfffff) | 0).toString(16);
 	return '#' + (n.length !== 6 ? ((Math.random() * 0xf) | 0).toString(16) + n : n);
 }
 
 /**
- *
- * @param {Number} length 随机字符串长度
+ * 生成随机字符串
+ * @param {Number} - 随机字符串长度
  * @returns {String}
  */
 module.exports.randomString = function (length) {
@@ -128,9 +143,8 @@ module.exports.randomString = function (length) {
 }
 
 /**
- *
- * @param {*} str
- * @param {*} type
+ * @param {String} - 被检测的字符串
+ * @param {String} - 检测类型
  * @returns {Boolean}
  */
 module.exports.checkStringType = function (str, type) {
@@ -154,13 +168,23 @@ module.exports.checkStringType = function (str, type) {
 	}
 };
 
+/**
+ * 生成随机数.
+ * @param {Number} - 最小值
+ * @param {Number} - 最大值
+ * @returns {Number}
+ */
 module.exports.randomNum = function (Min, Max) {
 	var Range = Max - Min;
 	var Rand = Math.random();
 	return (Min + Math.round(Rand * Range));
 }
 
-//数组排序
+/**
+ * 数组排序.
+ * @param {Array} - source array
+ * @returns {Array} - new array
+ */
 module.exports.quickSort = function (arr) {
 	if (arr.length <= 1) return arr;
 	let middle_number = Math.floor(arr.length / 2);

@@ -7,5 +7,6 @@
 
 module.exports = Object.assign(
   require("./src/common"),
-  require("./src/browser")
+  require("./src/browser"),
+  require("./src/encrypt"),
 );
