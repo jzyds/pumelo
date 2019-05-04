@@ -6,4 +6,5 @@ package-lock.json
 .eslintrc.json
 test.html
 test/
+.idea/
 .idea
