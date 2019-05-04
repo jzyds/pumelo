@@ -1,25 +1,30 @@
 {
   "name": "pumelo",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "commonly used functions for javascript",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xq-li/pumelo.git"
+    "url": "git+https://github.com/jzyds/pumelo.git"
   },
   "keywords": [
     "javascript"
   ],
-  "author": "github.com/xq-li",
+  "author": "github.com/jzyds",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xq-li/pumelo/issues"
+    "url": "https://github.com/jzyds/pumelo/issues"
   },
-  "homepage": "https://github.com/xq-li/pumelo#readme"
+  "homepage": "https://github.com/jzyds/pumelo#readme",
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
 }
