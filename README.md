@@ -30,4 +30,5 @@ ES6 module:
 
 ```js
 import pumelo from 'pumelo'
+import pumeloDom from 'pumelo/dom'
 ```
