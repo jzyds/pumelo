@@ -3,14 +3,17 @@
 JavaScript工具箱
 
 ## Document
-[doc](./doc/doc.md)
+[common](./doc/common.md)
+
+[dom](./doc/dom.md)
 
 ## Installation
 
 Browser:
 
 ```html
-<script src='dist/pumelo.js'></script>
+<script src='https://unpkg.com/pumelo/dist/pumelo.js'></script>
+<script src='https://unpkg.com/pumelo/dist/pumeloDom.js'></script>
 ```
 
 [Node.js](http://nodejs.org):

@@ -1,14 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  entry: './index.js',
+  entry: {
+    pumelo: './index.js',
+    pumeloDom: './dom.js'
+  },
   output: {
-    filename: 'pumelo.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    library: "pumelo"
+    library: '[name]'
   },
 	optimization: {
 		// We no not want to minimize our code.
-		minimize: false
+		minimize: true
 	},
 };

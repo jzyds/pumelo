@@ -1,4 +1,58 @@
 /**
+ * timeDown
+ * @param {Number} totalSeconds
+ * @param {Function} fn
+ * @returns {*}
+ */
+module.exports.timeDown = (totalSeconds, fn) => {
+  let days = Math.floor(totalSeconds / (60 * 60 * 24));
+  let modulo = totalSeconds % (60 * 60 * 24);
+  let hours = Math.floor(modulo / (60 * 60));
+  modulo = modulo % (60 * 60);
+  let minutes = Math.floor(modulo / 60);
+  let seconds = modulo % 60;
+
+  fn(addZero(days), addZero(hours), addZero(minutes), addZero(seconds));
+  setTimeout(function() {
+    totalSeconds = totalSeconds - 1;
+    if (totalSeconds < 0) return;
+    timeDown(totalSeconds, fn);
+  }, 1000);
+};
+
+/**
+ * isObjectValueEqual
+ * @param {Object} a
+ * @param {Object} b
+ * @returns {Boolean}
+ */
+module.exports.isObjectValueEqual = (a, b) => {
+  // Create arrays of property names
+  var aProps = Object.getOwnPropertyNames(a);
+  var bProps = Object.getOwnPropertyNames(b);
+
+  // If number of properties is different,
+  // objects are not equivalent
+  if (aProps.length != bProps.length) {
+    return false;
+  }
+
+  for (let i = 0; i < aProps.length; i++) {
+    let propName = aProps[i];
+
+    // If values of same property are not equal,
+    // objects are not equivalent
+    if (a[propName] !== b[propName]) {
+      return false;
+    }
+  }
+
+  // If we made it this far, objects
+  // are considered equivalent
+  return true;
+};
+
+/**
  * find
  * @param {Array} arr
  * @param {Function} callback

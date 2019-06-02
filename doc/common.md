@@ -1,6 +1,12 @@
 ## Functions
 
 <dl>
+<dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
+<dd><p>timeDown</p>
+</dd>
+<dt><a href="#isObjectValueEqual">isObjectValueEqual(a, b)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isObjectValueEqual</p>
+</dd>
 <dt><a href="#find">find(arr, callback)</a> ⇒ <code>*</code></dt>
 <dd><p>find</p>
 </dd>
@@ -39,16 +45,31 @@
 <dt><a href="#quickSort">quickSort(arr)</a> ⇒ <code>Array</code></dt>
 <dd><p>数组排序.</p>
 </dd>
-<dt><a href="#base64">base64()</a> ⇒ <code>String</code></dt>
-<dd><p>Base64加密</p>
-</dd>
-<dt><a href="#md5">md5()</a> ⇒ <code>String</code></dt>
-<dd><p>MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）</p>
-</dd>
-<dt><a href="#sha1">sha1()</a> ⇒ <code>String</code></dt>
-<dd><p>sha1加密（Secure Hash Algorithm ／ 安全哈希算法）</p>
-</dd>
 </dl>
+
+<a name="timeDown"></a>
+
+## timeDown(totalSeconds, fn) ⇒ <code>\*</code>
+timeDown
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| totalSeconds | <code>Number</code> | 
+| fn | <code>function</code> | 
+
+<a name="isObjectValueEqual"></a>
+
+## isObjectValueEqual(a, b) ⇒ <code>Boolean</code>
+isObjectValueEqual
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| a | <code>Object</code> | 
+| b | <code>Object</code> | 
 
 <a name="find"></a>
 
@@ -193,41 +214,3 @@ Measures the time taken by a function to execute.
 | --- | --- | --- |
 | arr | <code>Array</code> | source array |
 
-<a name="base64"></a>
-
-## base64() ⇒ <code>String</code>
-Base64加密
-
-**Kind**: global function  
-**Example**  
-```js
-let base64 = new pumelo.base64();
-加密
-base64.encode("some string");
-解密
-base64.decode(base64.encode("some string"));
-```
-<a name="md5"></a>
-
-## md5() ⇒ <code>String</code>
-MD5加密（Message-Digest Algorithm 5 ／ 消息摘要算法）
-
-**Kind**: global function  
-**Example**  
-```js
-let md5 = new pumelo.md5()
-加密
-md5.hex_md5("some string")
-```
-<a name="sha1"></a>
-
-## sha1() ⇒ <code>String</code>
-sha1加密（Secure Hash Algorithm ／ 安全哈希算法）
-
-**Kind**: global function  
-**Example**  
-```js
-let sha1 = new pumelo.sha1()
-加密
-sha1.hex_sha1("some string")
-```
