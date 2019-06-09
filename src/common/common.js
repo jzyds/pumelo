@@ -261,3 +261,4 @@ module.exports.quickSort = function (arr) {
   }
   return this.quickSort(leftList).concat([pivot], this.quickSort(rightList));
 }
+

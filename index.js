@@ -6,6 +6,6 @@
  */
 
 module.exports = Object.assign(
-  require("./src/common"),
-  require("./src/encrypt"),
+  require("./src/common")
 );
+
