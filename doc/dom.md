@@ -4,7 +4,7 @@
 <dt><a href="#checkWebp">checkWebp()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check if the browser supports the webp format</p>
 </dd>
-<dt><a href="#setbBaseFontSizeByClientWidth">setbBaseFontSizeByClientWidth()</a> ⇒ <code>void</code></dt>
+<dt><a href="#setBaseFontSizeByClientWidth">setBaseFontSizeByClientWidth()</a> ⇒ <code>void</code></dt>
 <dd><p>Set the page root element font size,
 usually used in conjunction with rem</p>
 </dd>
@@ -49,9 +49,9 @@ usually used in conjunction with rem</p>
 Check if the browser supports the webp format
 
 **Kind**: global function  
-<a name="setbBaseFontSizeByClientWidth"></a>
+<a name="setBaseFontSizeByClientWidth"></a>
 
-## setbBaseFontSizeByClientWidth() ⇒ <code>void</code>
+## setBaseFontSizeByClientWidth() ⇒ <code>void</code>
 Set the page root element font size,
 usually used in conjunction with rem
 

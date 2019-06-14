@@ -15,7 +15,7 @@ module.exports.checkWebp = function () {
  * usually used in conjunction with rem
  * @returns {void}
  */
-module.exports.setbBaseFontSizeByClientWidth = () => {
+module.exports.setBaseFontSizeByClientWidth = () => {
   if (process.client) {
     const baseSize = 16;
     const scale = document.documentElement.clientWidth / 375;
