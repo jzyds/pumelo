@@ -1,6 +1,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
+<dd><p>Update or create query string</p>
+</dd>
 <dt><a href="#checkWebp">checkWebp()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check if the browser supports the webp format</p>
 </dd>
@@ -42,6 +45,19 @@ usually used in conjunction with rem</p>
 返回后不刷新</p>
 </dd>
 </dl>
+
+<a name="updateQueryStringParameter"></a>
+
+## updateQueryStringParameter(uri, key, value) ⇒ <code>String</code>
+Update or create query string
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| uri | <code>String</code> | 
+| key | <code>String</code> | 
+| value | <code>String</code> | 
 
 <a name="checkWebp"></a>
 
