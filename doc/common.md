@@ -1,6 +1,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
+<dd><p>Update or create query string</p>
+</dd>
 <dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
 <dd><p>timeDown</p>
 </dd>
@@ -55,6 +58,19 @@
 <dd><p>sha1加密（Secure Hash Algorithm ／ 安全哈希算法）</p>
 </dd>
 </dl>
+
+<a name="updateQueryStringParameter"></a>
+
+## updateQueryStringParameter(uri, key, value) ⇒ <code>String</code>
+Update or create query string
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| uri | <code>String</code> | 
+| key | <code>String</code> | 
+| value | <code>String</code> | 
 
 <a name="timeDown"></a>
 
