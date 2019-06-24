@@ -22,6 +22,9 @@
 <dt><a href="#once">once(fn)</a> ⇒ <code>function</code></dt>
 <dd><p>once</p>
 </dd>
+<dt><a href="#deepClone">deepClone(a)</a> ⇒ <code>*</code></dt>
+<dd><p>deep clone</p>
+</dd>
 <dt><a href="#isObj">isObj(obj)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isObj</p>
 </dd>
@@ -142,6 +145,17 @@ once
 | Param | Type |
 | --- | --- |
 | fn | <code>function</code> | 
+
+<a name="deepClone"></a>
+
+## deepClone(a) ⇒ <code>\*</code>
+deep clone
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| a | <code>Array</code> \| <code>Object</code> | 
 
 <a name="isObj"></a>
 

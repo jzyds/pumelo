@@ -5,7 +5,7 @@
  * @param {String} value
  * @returns {String}
  */
-module.exports.updateQueryStringParameter = function(uri, key, value) {
+module.exports.updateQueryStringParameter = function (uri, key, value) {
   var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
   var separator = uri.indexOf('?') !== -1 ? "&" : "?";
   if (uri.match(re)) {
@@ -30,7 +30,7 @@ module.exports.timeDown = (totalSeconds, fn) => {
   let seconds = modulo % 60;
 
   fn(addZero(days), addZero(hours), addZero(minutes), addZero(seconds));
-  setTimeout(function() {
+  setTimeout(function () {
     totalSeconds = totalSeconds - 1;
     if (totalSeconds < 0) return;
     timeDown(totalSeconds, fn);
@@ -133,6 +133,33 @@ module.exports.once = function (fn) {
   return function () {
     return done ? void 0 : ((done = true), fn.apply(this, arguments));
   }
+};
+
+/**
+ * deep clone
+ * @param {Array | Object} a
+ * @returns {*}
+ */
+module.exports.deepClone = function (a) {
+  let n;
+  let t = Object.prototype.toString;
+  if (t.call(a) === "[object Array]") {
+    n = []
+  } else if (t.call(a) === "[object Object]") {
+    n = {}
+  } else {
+    return a
+  }
+  for (let i in a) {
+    if (a.hasOwnProperty(i)) {
+      if (t.call(a[i]) === "[object Array]" || t.call(a[i]) === "[object Object]") {
+        n[i] = this.deepClone(a[i])
+      } else {
+        n[i] = a[i]
+      }
+    }
+  }
+  return n
 };
 
 module.exports.copyArray = function (arr) {
