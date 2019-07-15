@@ -1,3 +1,11 @@
+## Classes
+
+<dl>
+<dt><a href="#FormatTimestamp">FormatTimestamp</a></dt>
+<dd><p>FormatTimestamp</p>
+</dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -12,6 +20,9 @@
 </dd>
 <dt><a href="#find">find(arr, callback)</a> ⇒ <code>*</code></dt>
 <dd><p>find</p>
+</dd>
+<dt><a href="#rmArrayItem">rmArrayItem(arr, item)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>rmArrayItem</p>
 </dd>
 <dt><a href="#every">every(arr, fn)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>every</p>
@@ -62,6 +73,21 @@
 </dd>
 </dl>
 
+<a name="FormatTimestamp"></a>
+
+## FormatTimestamp
+FormatTimestamp
+
+**Kind**: global class  
+<a name="new_FormatTimestamp_new"></a>
+
+### new FormatTimestamp(timestamp)
+**Returns**: *  
+
+| Param | Type |
+| --- | --- |
+| timestamp | <code>String</code> | 
+
 <a name="updateQueryStringParameter"></a>
 
 ## updateQueryStringParameter(uri, key, value) ⇒ <code>String</code>
@@ -110,6 +136,18 @@ find
 | --- | --- |
 | arr | <code>Array</code> | 
 | callback | <code>function</code> | 
+
+<a name="rmArrayItem"></a>
+
+## rmArrayItem(arr, item) ⇒ <code>Boolean</code>
+rmArrayItem
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| arr | <code>Array</code> | 
+| item | <code>\*</code> | 
 
 <a name="every"></a>
 

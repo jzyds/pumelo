@@ -15,6 +15,15 @@ module.exports.updateQueryStringParameter = function (uri, key, value) {
   }
 };
 
+function addZero(n){
+  n = String(n);
+  if (n.length === 1) {
+    return "0" + n;
+  } else {
+    return n;
+  }
+}
+
 /**
  * timeDown
  * @param {Number} totalSeconds
@@ -77,7 +86,7 @@ module.exports.isObjectValueEqual = (a, b) => {
  */
 module.exports.find = function (arr, callback) {
   if (arr == null || arr.length == 0) {
-    this.print('array is null');
+    console.log('array is null');
     return;
   }
 
@@ -88,6 +97,66 @@ module.exports.find = function (arr, callback) {
     }
   }
 };
+
+/**
+ * rmArrayItem
+ * @param {Array} arr
+ * @param {*} item
+ * @returns {Boolean}
+ */
+module.exports.rmArrayItem = function (arr, item){
+  var index = arr.indexOf(item);
+  if (index !== -1) {
+    array.splice(index, 1)
+    return true;
+  }else {
+    return false;
+  }
+}
+
+/**
+ * FormatTimestamp
+ * @param {String} timestamp
+ * @returns *
+ */
+class FormatTimestamp {
+  constructor(timestamp) {
+    let time = new Date(timestamp);
+    this.y = time.getFullYear();
+    this.m = this.add0(time.getMonth() + 1);
+    this.d = this.add0(time.getDate());
+    this.h = this.add0(time.getHours());
+    this.mm = this.add0(time.getMinutes());
+    this.s = this.add0(time.getSeconds());
+  }
+
+  add0(num) {
+    return Number(num) < 10 ? "0" + String(num) : num;
+  }
+
+  format_dot(timestamp) {
+    return `${this.y}.${this.m}.${this.d} ` + `${this.h}:${this.mm}:${this.s}`;
+  }
+
+  format(type) {
+    if (type === "M-D") {
+      return this.m + "-" + this.d
+    }
+  }
+
+  obj() {
+    return {
+      year: this.y,
+      month: this.m,
+      day: this.d,
+      hour: this.h,
+      minute: this.mm,
+      second: this.s
+    };
+  }
+}
+
+module.exports.FormatTimestamp = FormatTimestamp;
 
 
 /**
