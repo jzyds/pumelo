@@ -79,12 +79,12 @@ module.exports.isObjectValueEqual = (a, b) => {
 };
 
 /**
- * find
+ * findIndex
  * @param {Array} arr
  * @param {Function} callback
- * @returns {*}
+ * @returns {Number}
  */
-module.exports.find = function (arr, callback) {
+module.exports.findIndex = function (arr, callback) {
   if (arr == null || arr.length == 0) {
     console.log('array is null');
     return;
@@ -93,7 +93,7 @@ module.exports.find = function (arr, callback) {
   for (var i = 0; i < arr.length; i++) {
     var __boolean__ = callback(arr[i]);
     if (__boolean__) {
-      return arr[i]
+      return i
     }
   }
 };

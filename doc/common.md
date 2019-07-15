@@ -18,8 +18,8 @@
 <dt><a href="#isObjectValueEqual">isObjectValueEqual(a, b)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isObjectValueEqual</p>
 </dd>
-<dt><a href="#find">find(arr, callback)</a> ⇒ <code>*</code></dt>
-<dd><p>find</p>
+<dt><a href="#findIndex">findIndex(arr, callback)</a> ⇒ <code>Number</code></dt>
+<dd><p>findIndex</p>
 </dd>
 <dt><a href="#rmArrayItem">rmArrayItem(arr, item)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>rmArrayItem</p>
@@ -125,10 +125,10 @@ isObjectValueEqual
 | a | <code>Object</code> | 
 | b | <code>Object</code> | 
 
-<a name="find"></a>
+<a name="findIndex"></a>
 
-## find(arr, callback) ⇒ <code>\*</code>
-find
+## findIndex(arr, callback) ⇒ <code>Number</code>
+findIndex
 
 **Kind**: global function  
 
