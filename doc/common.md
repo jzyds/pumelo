@@ -9,6 +9,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#calculateDifference">calculateDifference(difference)</a> ⇒ <code>Object</code></dt>
+<dd><p>calculateDifference</p>
+</dd>
 <dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p>
 </dd>
@@ -87,6 +90,17 @@ FormatTimestamp
 | Param | Type |
 | --- | --- |
 | timestamp | <code>String</code> | 
+
+<a name="calculateDifference"></a>
+
+## calculateDifference(difference) ⇒ <code>Object</code>
+calculateDifference
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| difference | <code>Number</code> | 
 
 <a name="updateQueryStringParameter"></a>
 
