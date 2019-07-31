@@ -3,13 +3,23 @@
  * @param {Number} difference
  * @returns {Object}
  */
-module.exports.calculateDifference = function (difference) {
+module.exports.calculateDifference = function (difference, language) {
   const second = 1000
   const minute = 60 * second
   const hour = 60 * minute
   const day = 24 * hour
   const month = 30 * day // approximately
   const year = 365 * day // approximately
+
+  const hashEnCh = {
+    second: '秒',
+    minute: '分钟',
+    hour: '小时',
+    day: '天',
+    month: '月',
+    year: '年'
+  }
+
 
   let obj = {}
   const time = [{ year }, { month }, { day }, { hour }, { minute }, { second }]
@@ -19,7 +29,15 @@ module.exports.calculateDifference = function (difference) {
       difference -= unit * units
       const maybePlural = units === 1 ? '' : 's'
       obj[unitName] = units
-      return units > 0 ? units + ' ' + unitName + maybePlural : ''
+      if (units > 0) {
+        if (!!language && language === 'cn'){
+          return units + ' ' + hashEnCh[unitName]
+        }else{
+          return units + ' ' + unitName + maybePlural
+        }
+      }else{
+        return ''
+      }
     })
     .filter(x => x)
   return {obj, formattedTime: time}
