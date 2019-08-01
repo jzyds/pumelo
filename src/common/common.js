@@ -11,7 +11,7 @@ module.exports.calculateDifference = function (difference, language) {
   const month = 30 * day // approximately
   const year = 365 * day // approximately
 
-  const hashEnCh = {
+  const hashEnCn = {
     second: '秒',
     minute: '分钟',
     hour: '小时',
@@ -31,7 +31,7 @@ module.exports.calculateDifference = function (difference, language) {
       obj[unitName] = units
       if (units > 0) {
         if (!!language && language === 'cn'){
-          return units + ' ' + hashEnCh[unitName]
+          return units + ' ' + hashEnCn[unitName]
         }else{
           return units + ' ' + unitName + maybePlural
         }
