@@ -190,12 +190,12 @@ class FormatTimestamp {
 
   obj () {
     return {
-      year: this.y,
-      month: this.m,
-      day: this.d,
-      hour: this.h,
-      minute: this.mm,
-      second: this.s,
+      year: String (this.y),
+      month: String (this.m),
+      day: String (this.d),
+      hour: String (this.h),
+      minute: String (this.mm),
+      second: String (this.s)
     };
   }
 }
