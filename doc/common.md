@@ -45,6 +45,9 @@
 <dt><a href="#isArray">isArray(obj)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isArray</p>
 </dd>
+<dt><a href="#isFunction">isFunction(obj)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isFunction</p>
+</dd>
 <dt><a href="#distinctValuesOfArray">distinctValuesOfArray(arr)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns all the distinct values of an array.</p>
 </dd>
@@ -224,6 +227,17 @@ isObj
 
 ## isArray(obj) ⇒ <code>Boolean</code>
 isArray
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| obj | <code>\*</code> | 
+
+<a name="isFunction"></a>
+
+## isFunction(obj) ⇒ <code>Boolean</code>
+isFunction
 
 **Kind**: global function  
 
