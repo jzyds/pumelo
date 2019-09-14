@@ -16,3 +16,11 @@ jsdoc2md.render({files: "src/dom/*.js"}).then(o => {
     console.error(err)
   });
 });
+
+jsdoc2md.render({files: "src/node/*.js"}).then(o => {
+  fse.outputFile("./doc/node.md", o).then(() => {
+    console.log('Document generated');
+  }).catch(err => {
+    console.error(err)
+  });
+});

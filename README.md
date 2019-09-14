@@ -5,7 +5,9 @@ JavaScript工具箱
 ## Document
 [common](./doc/common.md)
 
-[dom](./doc/dom.md)
+[dom (browser only)](./doc/dom.md)
+
+[node (node only)](./doc/node.md)
 
 ## Installation
 
@@ -31,4 +33,5 @@ npm install pumelo --save
 
 ```js
 const pumelo = require('pumelo');
+const pumeloNode = require('pumelo/node');
 ```
