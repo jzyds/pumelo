@@ -59,6 +59,28 @@ module.exports.updateQueryStringParameter = function (uri, key, value) {
   }
 };
 
+/**
+ * 拍平一个多维数组
+ * @returns {Function}
+ * @example
+ * flat()([
+ *  [1],
+ *  [[2],[3]],
+ *  [[4,[5]]]
+ * ])
+ */
+module.exports.flat = function () {
+  let flatArr = [];
+  return function flatten (arr) {
+    for (let index = 0; index < arr.length; index++) {
+      Array.isArray (arr[index])
+        ? flatten (arr[index])
+        : flatArr.push (arr[index]);
+    }
+    return flatArr;
+  };
+};
+
 function addZero (n) {
   n = String (n);
   if (n.length === 1) {
@@ -195,7 +217,7 @@ class FormatTimestamp {
       day: String (this.d),
       hour: String (this.h),
       minute: String (this.mm),
-      second: String (this.s)
+      second: String (this.s),
     };
   }
 }

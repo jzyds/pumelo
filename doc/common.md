@@ -15,6 +15,9 @@
 <dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p>
 </dd>
+<dt><a href="#flat">flat()</a> ⇒ <code>function</code></dt>
+<dd><p>拍平一个多维数组</p>
+</dd>
 <dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
 <dd><p>timeDown</p>
 </dd>
@@ -118,6 +121,20 @@ Update or create query string
 | key | <code>String</code> | 
 | value | <code>String</code> | 
 
+<a name="flat"></a>
+
+## flat() ⇒ <code>function</code>
+拍平一个多维数组
+
+**Kind**: global function  
+**Example**  
+```js
+flat()([
+ [1],
+ [[2],[3]],
+ [[4,[5]]]
+])
+```
 <a name="timeDown"></a>
 
 ## timeDown(totalSeconds, fn) ⇒ <code>\*</code>
