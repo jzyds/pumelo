@@ -96,6 +96,7 @@ function addZero (n) {
  * @param {Function} fn
  * @returns {*}
  */
+
 module.exports.timeDown = (totalSeconds, fn) => {
   let days = Math.floor (totalSeconds / (60 * 60 * 24));
   let modulo = totalSeconds % (60 * 60 * 24);

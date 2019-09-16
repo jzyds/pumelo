@@ -1,3 +1,11 @@
+## Members
+
+<dl>
+<dt><a href="#browserObj">browserObj</a></dt>
+<dd><p>判断浏览器环境;</p>
+</dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -43,6 +51,12 @@ usually used in conjunction with rem</p>
 </dd>
 </dl>
 
+<a name="browserObj"></a>
+
+## browserObj
+判断浏览器环境;
+
+**Kind**: global variable  
 <a name="checkWebp"></a>
 
 ## checkWebp() ⇒ <code>boolean</code>
