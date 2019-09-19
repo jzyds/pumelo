@@ -9,6 +9,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#isNullString">isNullString(str)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isNullString</p>
+</dd>
 <dt><a href="#calculateDifference">calculateDifference(difference)</a> ⇒ <code>Object</code></dt>
 <dd><p>calculateDifference</p>
 </dd>
@@ -96,6 +99,17 @@ FormatTimestamp
 | Param | Type |
 | --- | --- |
 | timestamp | <code>String</code> | 
+
+<a name="isNullString"></a>
+
+## isNullString(str) ⇒ <code>Boolean</code>
+isNullString
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| str | <code>String</code> | 
 
 <a name="calculateDifference"></a>
 

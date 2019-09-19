@@ -1,4 +1,21 @@
 /**
+ * isNullString
+ * @param {String} str
+ * @returns {Boolean}
+ */
+module.exports.isNullString = function(str){
+  if (!str) {
+    return true;
+  }
+  if ( str === "" ) {
+    return true;
+  }
+  var regu = "^[ ]+$";
+  var re = new RegExp(regu);
+  return re.test(str);
+}
+
+/**
  * calculateDifference
  * @param {Number} difference
  * @returns {Object}
@@ -96,7 +113,6 @@ function addZero (n) {
  * @param {Function} fn
  * @returns {*}
  */
-
 module.exports.timeDown = (totalSeconds, fn) => {
   let days = Math.floor (totalSeconds / (60 * 60 * 24));
   let modulo = totalSeconds % (60 * 60 * 24);
