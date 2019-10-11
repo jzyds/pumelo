@@ -1,4 +1,15 @@
 /**
+ * isNullArray
+ * @param {any} arr
+ * @returns {Boolean}
+ */
+module.exports.isNullArray = function(arr){
+  if(!Array.isArray(arr)) return true;
+  if(arr.length === 0) return true;
+  return false;
+}
+
+/**
  * isNullString
  * @param {String} str
  * @returns {Boolean}

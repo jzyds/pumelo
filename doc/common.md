@@ -9,6 +9,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#isNullArray">isNullArray(arr)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isNullArray</p>
+</dd>
 <dt><a href="#isNullString">isNullString(str)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isNullString</p>
 </dd>
@@ -99,6 +102,17 @@ FormatTimestamp
 | Param | Type |
 | --- | --- |
 | timestamp | <code>String</code> | 
+
+<a name="isNullArray"></a>
+
+## isNullArray(arr) ⇒ <code>Boolean</code>
+isNullArray
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| arr | <code>any</code> | 
 
 <a name="isNullString"></a>
 
