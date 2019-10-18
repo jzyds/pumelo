@@ -549,7 +549,8 @@ module.exports.browserObj = {
     return navigator.userAgent.match (/iPhone|iPad|iPod/i);
   },
   isWx: function () {
-    return navigator.userAgent.match (/micromessenger/i);
+    var ua = navigator.userAgent.toLowerCase ();
+    return ua.indexOf ('micromessenger') != -1;
   },
   isChrome: function () {
     return (
