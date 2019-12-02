@@ -9,13 +9,13 @@
 ## Functions
 
 <dl>
-<dt><a href="#setCookie">setCookie()</a> ⇒ <code>void</code></dt>
+<dt><a href="#setCookie">setCookie(name, value)</a> ⇒ <code>void</code></dt>
 <dd><p>set browser cookie</p>
 </dd>
-<dt><a href="#getCookie">getCookie()</a> ⇒ <code>void</code></dt>
+<dt><a href="#getCookie">getCookie(name)</a> ⇒ <code>void</code></dt>
 <dd><p>get browser cookie</p>
 </dd>
-<dt><a href="#deleteCookie">deleteCookie()</a> ⇒ <code>void</code></dt>
+<dt><a href="#deleteCookie">deleteCookie(name)</a> ⇒ <code>void</code></dt>
 <dd><p>delete browser cookie</p>
 </dd>
 <dt><a href="#checkWebp">checkWebp()</a> ⇒ <code>boolean</code></dt>
@@ -68,22 +68,38 @@ usually used in conjunction with rem</p>
 **Kind**: global variable  
 <a name="setCookie"></a>
 
-## setCookie() ⇒ <code>void</code>
+## setCookie(name, value) ⇒ <code>void</code>
 set browser cookie
 
 **Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| name | <code>String</code> | 
+| value | <code>String</code> | 
+
 <a name="getCookie"></a>
 
-## getCookie() ⇒ <code>void</code>
+## getCookie(name) ⇒ <code>void</code>
 get browser cookie
 
 **Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| name | <code>String</code> | 
+
 <a name="deleteCookie"></a>
 
-## deleteCookie() ⇒ <code>void</code>
+## deleteCookie(name) ⇒ <code>void</code>
 delete browser cookie
 
 **Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| name | <code>String</code> | 
+
 <a name="checkWebp"></a>
 
 ## checkWebp() ⇒ <code>boolean</code>

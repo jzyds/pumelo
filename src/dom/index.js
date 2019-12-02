@@ -1,5 +1,7 @@
 /**
  * set browser cookie
+ * @param {String} name
+ * @param {String} value
  * @returns {void}
  */
 module.exports.setCookie = function (name, value) {
@@ -12,6 +14,7 @@ module.exports.setCookie = function (name, value) {
 
 /**
  * get browser cookie
+ * @param {String} name
  * @returns {void}
  */
 module.exports.getCookie = function (name) {
@@ -21,6 +24,7 @@ module.exports.getCookie = function (name) {
 
 /**
  * delete browser cookie
+ * @param {String} name
  * @returns {void}
  */
 module.exports.deleteCookie = function (name) {
