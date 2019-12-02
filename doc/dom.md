@@ -9,6 +9,15 @@
 ## Functions
 
 <dl>
+<dt><a href="#setCookie">setCookie()</a> ⇒ <code>void</code></dt>
+<dd><p>set browser cookie</p>
+</dd>
+<dt><a href="#getCookie">getCookie()</a> ⇒ <code>void</code></dt>
+<dd><p>get browser cookie</p>
+</dd>
+<dt><a href="#deleteCookie">deleteCookie()</a> ⇒ <code>void</code></dt>
+<dd><p>delete browser cookie</p>
+</dd>
 <dt><a href="#checkWebp">checkWebp()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check if the browser supports the webp format</p>
 </dd>
@@ -57,6 +66,24 @@ usually used in conjunction with rem</p>
 判断浏览器环境;
 
 **Kind**: global variable  
+<a name="setCookie"></a>
+
+## setCookie() ⇒ <code>void</code>
+set browser cookie
+
+**Kind**: global function  
+<a name="getCookie"></a>
+
+## getCookie() ⇒ <code>void</code>
+get browser cookie
+
+**Kind**: global function  
+<a name="deleteCookie"></a>
+
+## deleteCookie() ⇒ <code>void</code>
+delete browser cookie
+
+**Kind**: global function  
 <a name="checkWebp"></a>
 
 ## checkWebp() ⇒ <code>boolean</code>

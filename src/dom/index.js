@@ -2,7 +2,7 @@
  * set browser cookie
  * @returns {void}
  */
-module.exports = function setCookie () {
+module.exports.setCookie = function () {
   var Days = 30;
   var exp = new Date ();
   exp.setTime (exp.getTime () + Days * 24 * 60 * 60 * 1000);
@@ -14,7 +14,7 @@ module.exports = function setCookie () {
  * get browser cookie
  * @returns {void}
  */
-module.exports = function getCookie () {
+module.exports.getCookie = function () {
   var arr, reg = new RegExp ('(^| )' + name + '=([^;]*)(;|$)');
   return (arr = document.cookie.match (reg)) ? unescape (arr[2]) : null;
 };
@@ -23,7 +23,7 @@ module.exports = function getCookie () {
  * delete browser cookie
  * @returns {void}
  */
-module.exports = function deleteCookie () {
+module.exports.deleteCookie = function () {
   var exp = new Date ();
   exp.setTime (exp.getTime () - 1);
   var cval = getCookie (name);
