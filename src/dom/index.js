@@ -524,7 +524,7 @@ module.exports.browserObj = {
     return /Android|webOS|iPhone|iPod|BlackBerry/i.test (navigator.userAgent);
   },
   isAndroid: function () {
-    return navigator.userAgent.match (/Android/i);
+    return /Android/i.test (navigator.userAgent);
   },
   isMobileQQ: function () {
     var ua = navigator.userAgent;
@@ -534,7 +534,7 @@ module.exports.browserObj = {
     );
   },
   isIOS: function () {
-    return navigator.userAgent.match (/iPhone|iPad|iPod/i);
+    return /iPhone|iPad|iPod/i.test (navigator.userAgent);
   },
   isWx: function () {
     var ua = navigator.userAgent.toLowerCase ();
@@ -542,27 +542,27 @@ module.exports.browserObj = {
   },
   isChrome: function () {
     return (
-      navigator.userAgent.match (/Chrome\/([\d.]+)/) ||
-      navigator.userAgent.match (/CriOS\/([\d.]+)/)
+      /Chrome\/([\d.]+)/.test (navigator.userAgent) ||
+      /CriOS\/([\d.]+)/.test (navigator.userAgent)
     );
   },
   isBaidu: function () {
-    return navigator.userAgent.match (/baidubrowser/i);
+    return /baidubrowser/i.test (navigator.userAgent);
   },
   isUC: function () {
-    return navigator.userAgent.match (/UCBrowser/i);
+    return /UCBrowser/i.test (navigator.userAgent);
   },
   isSafari: function () {
-    return navigator.userAgent.match (/safari/i);
+    return /safari/i.test (navigator.userAgent);
   },
   isQQBrowser: function () {
-    return navigator.userAgent.match (/MQQBrowser/i);
+    return /MQQBrowser/i.test (navigator.userAgent);
   },
   isWeibo: function () {
-    return navigator.userAgent.match (/weibo/i);
+    return /weibo/i.test (navigator.userAgent);
   },
   isAlipay: function () {
-    return navigator.userAgent.match (/Alipay/i);
+    return /Alipay/i.test (navigator.userAgent);
   },
 };
 
