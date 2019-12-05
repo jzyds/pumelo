@@ -48,6 +48,9 @@
 <dt><a href="#deepClone">deepClone(a)</a> ⇒ <code>*</code></dt>
 <dd><p>deep clone</p>
 </dd>
+<dt><a href="#isNumber">isNumber(obj)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isNumber</p>
+</dd>
 <dt><a href="#isObj">isObj(obj)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isObj</p>
 </dd>
@@ -256,6 +259,17 @@ deep clone
 | Param | Type |
 | --- | --- |
 | a | <code>Array</code> \| <code>Object</code> | 
+
+<a name="isNumber"></a>
+
+## isNumber(obj) ⇒ <code>Boolean</code>
+isNumber
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| obj | <code>\*</code> | 
 
 <a name="isObj"></a>
 

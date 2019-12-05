@@ -3,28 +3,28 @@
  * @param {any} arr
  * @returns {Boolean}
  */
-module.exports.isNullArray = function(arr){
-  if(!Array.isArray(arr)) return true;
-  if(arr.length === 0) return true;
+module.exports.isNullArray = function (arr) {
+  if (!Array.isArray (arr)) return true;
+  if (arr.length === 0) return true;
   return false;
-}
+};
 
 /**
  * isNullString
  * @param {String} str
  * @returns {Boolean}
  */
-module.exports.isNullString = function(str){
+module.exports.isNullString = function (str) {
   if (!str) {
     return true;
   }
-  if ( str === "" ) {
+  if (str === '') {
     return true;
   }
-  var regu = "^[ ]+$";
-  var re = new RegExp(regu);
-  return re.test(str);
-}
+  var regu = '^[ ]+$';
+  var re = new RegExp (regu);
+  return re.test (str);
+};
 
 /**
  * calculateDifference
@@ -333,6 +333,15 @@ module.exports.copyArray = function (arr) {
 
 module.exports.hp = function (obj, key) {
   return obj.hasOwnProperty (key);
+};
+
+/**
+ * isNumber
+ * @param {*} obj
+ * @returns {Boolean}
+ */
+module.exports.isNumber = function (obj) {
+  return obj === +obj;
 };
 
 /**
