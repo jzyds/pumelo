@@ -18,6 +18,9 @@
 <dt><a href="#calculateDifference">calculateDifference(difference)</a> ⇒ <code>Object</code></dt>
 <dd><p>calculateDifference</p>
 </dd>
+<dt><a href="#timeShowFormat">timeShowFormat(timestamp)</a> ⇒ <code>String</code></dt>
+<dd><p>timeShowFormat</p>
+</dd>
 <dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p>
 </dd>
@@ -138,6 +141,17 @@ calculateDifference
 | Param | Type |
 | --- | --- |
 | difference | <code>Number</code> | 
+
+<a name="timeShowFormat"></a>
+
+## timeShowFormat(timestamp) ⇒ <code>String</code>
+timeShowFormat
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| timestamp | <code>Number</code> | 
 
 <a name="updateQueryStringParameter"></a>
 
