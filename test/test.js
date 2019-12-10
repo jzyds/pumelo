@@ -3,4 +3,6 @@ const pumelo = require('../index');
 // console.log(pumelo.calculateDifference(631123200000, 'cn'));
 
 const _n = require('../node')
-console.log(_n.readRecursionFileList()('../src'))
+// console.log(_n.readRecursionFileList()('../src'))
+
+console.log(pumelo.timeShowFormat(1575949978492))

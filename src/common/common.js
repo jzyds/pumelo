@@ -1,9 +1,4 @@
-const second_microsecond = 1000;
-const minute_microsecond = 60 * second_microsecond;
-const hour_microsecond = 60 * minute_microsecond;
-const day_microsecond = 24 * hour_microsecond;
-const month_microsecond = 30 * day_microsecond; // approximately
-const year_microsecond = 365 * day_microsecond; // approximately
+const moment = require ('moment');
 
 /**
  * isNullArray
@@ -83,33 +78,41 @@ module.exports.calculateDifference = function (difference, language) {
  * @returns {String}
  */
 module.exports.timeShowFormat = timestamp => {
-  let now = Date.now();
-  let timestampInt = Number(timestamp);
-  let calc = now - timestampInt;
-  
+  let timestampInt = Number (timestamp);
+
+  let startMinuteTimestamp = moment ().startOf ('minute').valueOf ();
+  let startDayTimestamp = moment ().startOf ('day').valueOf ();
+  let startYearTimestamp = moment ().startOf ('year').valueOf ();
+
   let formatTimestamp = new FormatTimestamp (timestampInt);
-  let timeObj = formatTimestamp.obj();
-  let formatStr = "";
+  let timeObj = formatTimestamp.obj ();
+  let formatStr = '';
 
-  if (calc > year_microsecond) {
-    formatStr = `${timeObj.year}-${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`
+  if (timestampInt < startYearTimestamp) {
+    // not current year
+    formatStr = `${timeObj.year}-${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`;
   }
 
-  if (calc <= year_microsecond && calc >= day_microsecond) {
-    formatStr = `${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`
+  if (timestampInt >= startYearTimestamp && timestampInt < startDayTimestamp) {
+    // is current year and not current day
+    formatStr = `${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`;
   }
 
-  if (calc < day_microsecond && calc > minute_microsecond) {
-    formatStr = `${timeObj.hour}:${timeObj.minute}`
+  if (
+    timestampInt >= startDayTimestamp &&
+    timestampInt < startMinuteTimestamp
+  ) {
+    // is current day and not current minute
+    formatStr = `${timeObj.hour}:${timeObj.minute}`;
   }
 
-  if (calc <= minute_microsecond) {
-    formatStr = `1分钟前`
+  if (timestampInt >= startMinuteTimestamp) {
+    // current minute
+    formatStr = `1分钟前`;
   }
 
   return formatStr;
 };
-
 
 /**
  * Update or create query string
