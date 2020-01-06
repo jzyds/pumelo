@@ -5,4 +5,4 @@ const pumelo = require('../index');
 const _n = require('../node')
 // console.log(_n.readRecursionFileList()('../src'))
 
-console.log(pumelo.timeShowFormat(1575949978492))
+console.log(pumelo.checkStringType('192.168.6.6', 'URL_START_WITH_HTTP_OR_HTTPS'))
