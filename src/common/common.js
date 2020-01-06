@@ -539,12 +539,10 @@ module.exports.checkStringType = function (str, type) {
       var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
       var regex = new RegExp (expression);
       return !!str.match (regex);
-
     case 'URL_NOT_REQUIRE_HTTP_OR_HTTPS':
       var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp (expression);
       return !!str.match (regex);
-
     case 'email':
       return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test (str);
     case 'phone':
