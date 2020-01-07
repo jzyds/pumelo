@@ -4,13 +4,28 @@
  * @param {function(width,height)} callback
  * @returns {void}
  */
-module.exports.getImageSize = function (src, callback) {
-  var img = new Image();
+module.exports.getImageSizeCallback = function (src, callback) {
+  var img = new Image ();
   img.onload = function () {
-    callback(this.width, this.height);
-  }
+    callback (this.width, this.height);
+  };
   img.src = src;
-}
+};
+
+/**
+ * get image size in browser
+ * @param {String} src
+ * @returns {void} 
+ */
+module.exports.getImageSizePromise = src => {
+  return new Promise ((resolve, reject) => {
+    var img = new Image ();
+    img.onload = function () {
+      resolve (this.width, this.height);
+    };
+    img.src = src;
+  });
+};
 
 /**
  * set browser cookie
@@ -629,4 +644,3 @@ function getCaretPosition (elem) {
   if (cum_length[0] <= cum_length[1]) return cum_length;
   return [cum_length[1], cum_length[0]];
 }
-
