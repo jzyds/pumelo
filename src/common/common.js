@@ -532,6 +532,9 @@ module.exports.randomString = function (length) {
  * @param {String} - 被检测的字符串
  * @param {String} - 检测类型
  * @returns {Boolean}
+ * @example
+ * URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
+ * email | phone | tel | number | lower | upper | ip
  */
 module.exports.checkStringType = function (str, type) {
   switch (type) {
