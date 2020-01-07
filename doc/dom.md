@@ -9,6 +9,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#getImageSize">getImageSize(src, callback)</a> ⇒ <code>void</code></dt>
+<dd><p>get image size in browser</p>
+</dd>
 <dt><a href="#setCookie">setCookie(name, value)</a> ⇒ <code>void</code></dt>
 <dd><p>set browser cookie</p>
 </dd>
@@ -66,6 +69,18 @@ usually used in conjunction with rem</p>
 判断浏览器环境;
 
 **Kind**: global variable  
+<a name="getImageSize"></a>
+
+## getImageSize(src, callback) ⇒ <code>void</code>
+get image size in browser
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| src | <code>String</code> | 
+| callback | <code>function</code> | 
+
 <a name="setCookie"></a>
 
 ## setCookie(name, value) ⇒ <code>void</code>

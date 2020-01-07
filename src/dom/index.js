@@ -1,4 +1,18 @@
 /**
+ * get image size in browser
+ * @param {String} src
+ * @param {function(width,height)} callback
+ * @returns {void}
+ */
+module.exports.getImageSize = function (src, callback) {
+  var img = new Image();
+  img.onload = function () {
+    callback(this.width, this.height);
+  }
+  img.src = src;
+}
+
+/**
  * set browser cookie
  * @param {String} name
  * @param {String} value
@@ -615,3 +629,4 @@ function getCaretPosition (elem) {
   if (cum_length[0] <= cum_length[1]) return cum_length;
   return [cum_length[1], cum_length[0]];
 }
+

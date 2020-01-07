@@ -1,4 +1,5 @@
 const pumelo = require('../index');
+const pumeloDom = require('../dom');
 // console.log(pumelo.calculateDifference(new Date() - new Date(1546315200000), 'cn'));
 // console.log(pumelo.calculateDifference(631123200000, 'cn'));
 
