@@ -21,7 +21,10 @@ module.exports.getImageSizePromise = src => {
   return new Promise ((resolve, reject) => {
     var img = new Image ();
     img.onload = function () {
-      resolve (this.width, this.height);
+      resolve({
+        width: this.width,
+        height: this.height
+      });
     };
     img.src = src;
   });
