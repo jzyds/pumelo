@@ -368,6 +368,11 @@ Measures the time taken by a function to execute.
 | str | <code>String</code> | 被检测的字符串 |
 | type | <code>String</code> | 检测类型 |
 
+**Example**  
+```js
+URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
+email | phone | tel | number | lower | upper | ip
+```
 <a name="randomNum"></a>
 
 ## randomNum(Min, Max) ⇒ <code>Number</code>
