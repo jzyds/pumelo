@@ -144,7 +144,7 @@ module.exports.updateQueryStringParameterByObj = function (
   let _uri = uri
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      _uri = updateQueryStringParameter(_uri, key, obj[key])
+      _uri = this.updateQueryStringParameter(_uri, key, obj[key])
     }
   }
   return _uri
