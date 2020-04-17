@@ -24,6 +24,9 @@
 <dt><a href="#updateQueryStringParameter">updateQueryStringParameter(uri, key, value)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p>
 </dd>
+<dt><a href="#updateQueryStringParameterByObj">updateQueryStringParameterByObj(uri, obj)</a> ⇒ <code>String</code></dt>
+<dd><p>Update or create query string</p>
+</dd>
 <dt><a href="#flat">flat()</a> ⇒ <code>function</code></dt>
 <dd><p>拍平一个多维数组</p>
 </dd>
@@ -165,6 +168,18 @@ Update or create query string
 | uri | <code>String</code> | 
 | key | <code>String</code> | 
 | value | <code>String</code> | 
+
+<a name="updateQueryStringParameterByObj"></a>
+
+## updateQueryStringParameterByObj(uri, obj) ⇒ <code>String</code>
+Update or create query string
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| uri | <code>String</code> | 
+| obj | <code>Object</code> | 
 
 <a name="flat"></a>
 
