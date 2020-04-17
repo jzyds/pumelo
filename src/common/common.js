@@ -121,7 +121,7 @@ module.exports.timeShowFormat = timestamp => {
  * @param {String} value
  * @returns {String}
  */
-module.exports.updateQueryStringParameter = function (uri, key, value) {
+function updateQueryStringParameter(uri, key, value) {
   var re = new RegExp('([?&])' + key + '=.*?(&|$)', 'i');
   var separator = uri.indexOf('?') !== -1 ? '&' : '?';
   if (uri.match(re)) {
@@ -130,6 +130,7 @@ module.exports.updateQueryStringParameter = function (uri, key, value) {
     return uri + separator + key + '=' + value;
   }
 };
+module.exports.updateQueryStringParameter = updateQueryStringParameter
 
 /**
  * Update or create query string
@@ -138,13 +139,13 @@ module.exports.updateQueryStringParameter = function (uri, key, value) {
  * @returns {String}
  */
 module.exports.updateQueryStringParameterByObj = function (
-  uri, 
+  uri,
   obj = {}
 ) {
   let _uri = uri
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      _uri = this.updateQueryStringParameter(_uri, key, obj[key])
+      _uri = updateQueryStringParameter(_uri, key, obj[key])
     }
   }
   return _uri
