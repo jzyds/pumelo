@@ -1,6 +1,19 @@
 const moment = require('moment');
 
 /**
+ * isNull
+ * @param {any} param
+ * @returns {Boolean}
+ */
+module.exports.isNull = function (param) {
+  return (
+    param === void 0 ||
+    param === null ||
+    param === undefined
+  )
+};
+
+/**
  * isNullArray
  * @param {any} arr
  * @returns {Boolean}
