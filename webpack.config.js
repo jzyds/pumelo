@@ -3,8 +3,20 @@ const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
   entry: {
-    pumelo: "./index.js",
-    pumeloDom: "./dom.js",
+    pumelo: "./src/index.ts",
+    pumeloDom: "./src/dom.ts",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     filename: "[name].js",

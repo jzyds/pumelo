@@ -5,7 +5,4 @@
  * @author xqLi
  */
 
-module.exports = Object.assign(
-  require("./src/common")
-);
-
+export * from "./common/index";

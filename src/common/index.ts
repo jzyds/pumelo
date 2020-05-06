@@ -1,16 +1,16 @@
-const moment = require("moment");
+import moment from "moment";
 
 /**
  * tinyMoment
  */
-module.exports.tinyMoment = moment;
+export const tinyMoment = moment;
 
 /**
  * isNull
  * @param {any} param
  * @returns {Boolean}
  */
-module.exports.isNull = function (param) {
+export const isNull = function (param: any) {
   return param === void 0 || param === null || param === undefined;
 };
 
@@ -19,7 +19,7 @@ module.exports.isNull = function (param) {
  * @param {any} arr
  * @returns {Boolean}
  */
-module.exports.isNullArray = function (arr) {
+export const isNullArray = function (arr: string | any[]) {
   if (!Array.isArray(arr)) return true;
   if (arr.length === 0) return true;
   return false;
@@ -30,7 +30,7 @@ module.exports.isNullArray = function (arr) {
  * @param {String} str
  * @returns {Boolean}
  */
-module.exports.isNullString = function (str) {
+export const isNullString = function (str: string) {
   if (!str) {
     return true;
   }
@@ -47,7 +47,10 @@ module.exports.isNullString = function (str) {
  * @param {Number} difference
  * @returns {Object}
  */
-module.exports.calculateDifference = function (difference, language) {
+export const calculateDifference = function (
+  difference: number,
+  language: string
+) {
   const second = 1000;
   const minute = 60 * second;
   const hour = 60 * minute;
@@ -55,7 +58,7 @@ module.exports.calculateDifference = function (difference, language) {
   const month = 30 * day; // approximately
   const year = 365 * day; // approximately
 
-  const hashEnCn = {
+  const hashEnCn: any = {
     second: "秒",
     minute: "分钟",
     hour: "小时",
@@ -64,10 +67,10 @@ module.exports.calculateDifference = function (difference, language) {
     year: "年",
   };
 
-  let obj = {};
+  let obj: any = {};
   const time = [{ year }, { month }, { day }, { hour }, { minute }, { second }]
-    .map((item, i, a) => {
-      const [[unitName, unit]] = Object.entries(item);
+    .map((item) => {
+      const [[unitName, unit]]: any = Object.entries(item);
       const units = (difference / unit) | 0;
       difference -= unit * units;
       const maybePlural = units === 1 ? "" : "s";
@@ -91,7 +94,7 @@ module.exports.calculateDifference = function (difference, language) {
  * @param {Number} timestamp
  * @returns {String}
  */
-module.exports.timeShowFormat = (timestamp) => {
+export const timeShowFormat = (timestamp: any) => {
   let timestampInt = Number(timestamp);
 
   let startMinuteTimestamp = moment().startOf("minute").valueOf();
@@ -135,7 +138,11 @@ module.exports.timeShowFormat = (timestamp) => {
  * @param {String} value
  * @returns {String}
  */
-function updateQueryStringParameter(uri, key, value) {
+export function updateQueryStringParameter(
+  uri: string,
+  key: string,
+  value: string
+) {
   var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
   var separator = uri.indexOf("?") !== -1 ? "&" : "?";
   if (uri.match(re)) {
@@ -144,7 +151,6 @@ function updateQueryStringParameter(uri, key, value) {
     return uri + separator + key + "=" + value;
   }
 }
-module.exports.updateQueryStringParameter = updateQueryStringParameter;
 
 /**
  * Update or create query string
@@ -152,7 +158,10 @@ module.exports.updateQueryStringParameter = updateQueryStringParameter;
  * @param {Object} obj
  * @returns {String}
  */
-module.exports.updateQueryStringParameterByObj = function (uri, obj = {}) {
+export const updateQueryStringParameterByObj = function (
+  uri: any,
+  obj: any = {}
+) {
   let _uri = uri;
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -172,9 +181,9 @@ module.exports.updateQueryStringParameterByObj = function (uri, obj = {}) {
  *  [[4,[5]]]
  * ])
  */
-module.exports.flat = function () {
-  let flatArr = [];
-  return function flatten(arr) {
+export const flat = function () {
+  let flatArr: any[] = [];
+  return function flatten(arr: string | any[]) {
     for (let index = 0; index < arr.length; index++) {
       Array.isArray(arr[index])
         ? flatten(arr[index])
@@ -184,7 +193,7 @@ module.exports.flat = function () {
   };
 };
 
-function addZero(n) {
+function addZero(n: string | number | any[]) {
   n = String(n);
   if (n.length === 1) {
     return "0" + n;
@@ -199,7 +208,10 @@ function addZero(n) {
  * @param {Function} fn
  * @returns {*}
  */
-module.exports.timeDown = (totalSeconds, fn) => {
+export const timeDown = (
+  totalSeconds: number,
+  fn: (arg0: any, arg1: any, arg2: any, arg3: any) => void
+) => {
   let days = Math.floor(totalSeconds / (60 * 60 * 24));
   let modulo = totalSeconds % (60 * 60 * 24);
   let hours = Math.floor(modulo / (60 * 60));
@@ -221,7 +233,10 @@ module.exports.timeDown = (totalSeconds, fn) => {
  * @param {Object} b
  * @returns {Boolean}
  */
-module.exports.isObjectValueEqual = (a, b) => {
+export const isObjectValueEqual = (
+  a: { [x: string]: any },
+  b: { [x: string]: any }
+) => {
   // Create arrays of property names
   var aProps = Object.getOwnPropertyNames(a);
   var bProps = Object.getOwnPropertyNames(b);
@@ -253,10 +268,13 @@ module.exports.isObjectValueEqual = (a, b) => {
  * @param {Function} callback
  * @returns {Number}
  */
-module.exports.findIndex = function (arr, callback) {
+export const findIndex = function (
+  arr: string | any[],
+  callback: (arg0: any) => any
+): number {
   if (arr == null || arr.length == 0) {
     console.log("array is null");
-    return;
+    return -1;
   }
 
   for (var i = 0; i < arr.length; i++) {
@@ -265,6 +283,8 @@ module.exports.findIndex = function (arr, callback) {
       return i;
     }
   }
+
+  return -1;
 };
 
 /**
@@ -273,10 +293,10 @@ module.exports.findIndex = function (arr, callback) {
  * @param {*} item
  * @returns {Boolean}
  */
-module.exports.rmArrayItem = function (arr, item) {
+export const rmArrayItem = function (arr: any[], item: any) {
   var index = arr.indexOf(item);
   if (index !== -1) {
-    array.splice(index, 1);
+    arr.splice(index, 1);
     return true;
   } else {
     return false;
@@ -288,8 +308,14 @@ module.exports.rmArrayItem = function (arr, item) {
  * @param {String} timestamp
  * @returns *
  */
-class FormatTimestamp {
-  constructor(timestamp) {
+export class FormatTimestamp {
+  y: number;
+  m: string | number;
+  d: string | number;
+  h: string | number;
+  mm: string | number;
+  s: string | number;
+  constructor(timestamp: any) {
     let time = new Date(timestamp);
     this.y = time.getFullYear();
     this.m = this.add0(time.getMonth() + 1);
@@ -299,15 +325,15 @@ class FormatTimestamp {
     this.s = this.add0(time.getSeconds());
   }
 
-  add0(num) {
+  add0(num: number) {
     return Number(num) < 10 ? "0" + String(num) : num;
   }
 
-  format_dot(timestamp) {
+  format_dot() {
     return `${this.y}.${this.m}.${this.d} ` + `${this.h}:${this.mm}:${this.s}`;
   }
 
-  format(type) {
+  format(type: string): any {
     if (type === "M-D") {
       return this.m + "-" + this.d;
     }
@@ -325,15 +351,13 @@ class FormatTimestamp {
   }
 }
 
-module.exports.FormatTimestamp = FormatTimestamp;
-
 /**
  * every
  * @param {Array} arr
  * @param {Function} fn
  * @returns {Boolean}
  */
-module.exports.every = function (arr, fn) {
+export const every = function (arr: any, fn: Function) {
   var result = true;
   for (var i = 0; i < arr.length; i++) {
     result = result && fn(arr[i]);
@@ -350,7 +374,7 @@ module.exports.every = function (arr, fn) {
  * @param {Function} fn
  * @returns {Boolean}
  */
-module.exports.some = function (arr, fn) {
+export const some = function (arr: any, fn: Function) {
   var result = false;
   for (var i = 0; i < arr.length; i++) {
     result = fn(arr[i]);
@@ -364,11 +388,11 @@ module.exports.some = function (arr, fn) {
  * @param {Function} fn
  * @returns {Function}
  */
-module.exports.once = function (fn) {
+export const once = function (fn: Function) {
   var done = false;
 
   return function () {
-    return done ? void 0 : ((done = true), fn.apply(this, arguments));
+    return done ? void 0 : ((done = true), fn(arguments));
   };
 };
 
@@ -377,8 +401,8 @@ module.exports.once = function (fn) {
  * @param {Array | Object} a
  * @returns {*}
  */
-module.exports.deepClone = function (a) {
-  let n;
+export const deepClone = function (a: any) {
+  let n: any;
   let t = Object.prototype.toString;
   if (t.call(a) === "[object Array]") {
     n = [];
@@ -393,7 +417,7 @@ module.exports.deepClone = function (a) {
         t.call(a[i]) === "[object Array]" ||
         t.call(a[i]) === "[object Object]"
       ) {
-        n[i] = this.deepClone(a[i]);
+        n[i] = deepClone(a[i]);
       } else {
         n[i] = a[i];
       }
@@ -402,11 +426,11 @@ module.exports.deepClone = function (a) {
   return n;
 };
 
-module.exports.copyArray = function (arr) {
+export const copyArray = function (arr: any) {
   return arr.concat();
 };
 
-module.exports.hp = function (obj, key) {
+export const hp = function (obj: any, key: any) {
   return obj.hasOwnProperty(key);
 };
 
@@ -415,7 +439,7 @@ module.exports.hp = function (obj, key) {
  * @param {*} obj
  * @returns {Boolean}
  */
-module.exports.isNumber = function (obj) {
+export const isNumber = function (obj: any) {
   return obj === +obj;
 };
 
@@ -424,7 +448,7 @@ module.exports.isNumber = function (obj) {
  * @param {*} obj
  * @returns {Boolean}
  */
-module.exports.isObj = function (obj) {
+export const isObj = function (obj: any) {
   let type = Object.prototype.toString.call(obj);
   return type === "[object Object]";
 };
@@ -434,7 +458,7 @@ module.exports.isObj = function (obj) {
  * @param {*} obj
  * @returns {Boolean}
  */
-module.exports.isArray = function (obj) {
+export const isArray = function (obj: any) {
   let type = Object.prototype.toString.call(obj);
   return type === "[object Array]";
 };
@@ -444,7 +468,7 @@ module.exports.isArray = function (obj) {
  * @param {*} obj
  * @returns {Boolean}
  */
-module.exports.isFunction = function (obj) {
+export const isFunction = function (obj: any) {
   let type = Object.prototype.toString.call(obj);
   return type === "[object Function]";
 };
@@ -454,14 +478,14 @@ module.exports.isFunction = function (obj) {
  * @param {Array} - source array
  * @returns {Array} - new array
  */
-module.exports.distinctValuesOfArray = (arr) => [...new Set(arr)];
+export const distinctValuesOfArray = (arr: any) => [...new Set(arr)];
 
 /**
  * Measures the time taken by a function to execute.
  * @param {Function} - callback function
  * @returns {*}
  */
-module.exports.timeTaken = function (callback) {
+export const timeTaken = function (callback: Function) {
   console.time("timeTaken");
   const r = callback();
   console.timeEnd("timeTaken");
@@ -472,7 +496,7 @@ module.exports.timeTaken = function (callback) {
  * 生成随机颜色
  * @returns {String}
  */
-module.exports.randomColor = function () {
+export const randomColor = function () {
   let n = ((Math.random() * 0xfffff) | 0).toString(16);
   return (
     "#" + (n.length !== 6 ? ((Math.random() * 0xf) | 0).toString(16) + n : n)
@@ -484,7 +508,7 @@ module.exports.randomColor = function () {
  * @param {Number} - 随机字符串长度
  * @returns {String}
  */
-module.exports.randomString = function (length) {
+export const randomString = function (length: number) {
   var str = "";
   var length = length;
   var arr = [
@@ -567,7 +591,7 @@ module.exports.randomString = function (length) {
  * URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
  * email | phone | tel | number | lower | upper | ip
  */
-module.exports.checkStringType = function (str, type) {
+export const checkStringType = function (str: string, type: string) {
   switch (type) {
     case "URL_START_WITH_HTTP_OR_HTTPS":
       var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
@@ -604,7 +628,7 @@ module.exports.checkStringType = function (str, type) {
  * @param {Number} - 最大值
  * @returns {Number}
  */
-module.exports.randomNum = function (Min, Max) {
+export const randomNum = function (Min: number, Max: number) {
   var Range = Max - Min;
   var Rand = Math.random();
   return Min + Math.round(Rand * Range);
@@ -615,12 +639,12 @@ module.exports.randomNum = function (Min, Max) {
  * @param {Array} - source array
  * @returns {Array} - new array
  */
-module.exports.quickSort = function (arr) {
+export const quickSort = function (arr: []) {
   if (arr.length <= 1) return arr;
   let middle_number = Math.floor(arr.length / 2);
   let pivot = arr.splice(middle_number, 1)[0];
-  let leftList = [];
-  let rightList = [];
+  let leftList: [] = [];
+  let rightList: [] = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] < pivot) {
       leftList.push(arr[i]);
@@ -628,5 +652,5 @@ module.exports.quickSort = function (arr) {
       rightList.push(arr[i]);
     }
   }
-  return this.quickSort(leftList).concat([pivot], this.quickSort(rightList));
+  return quickSort(leftList).concat([pivot], quickSort(rightList));
 };
