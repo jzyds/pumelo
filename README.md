@@ -18,7 +18,7 @@ Browser:
 <script src='https://unpkg.com/pumelo/dist/pumeloDom.js'></script>
 ```
 
-ES6 module:
+ES6 module / TypeScript:
 
 ```js
 import pumelo from 'pumelo'
