@@ -1,6 +1,6 @@
 # pumelo
 
-JavaScript工具箱
+JavaScript / TypeScript 工具箱
 
 ## Document
 [common](./doc/common.md)
@@ -22,7 +22,7 @@ ES6 module / TypeScript:
 
 ```js
 import pumelo from 'pumelo'
-import pumeloDom from 'pumelo/dom'
+import pumeloDom from 'pumelo/lib/dom'
 ```
 
 [Node.js](http://nodejs.org):
@@ -33,5 +33,5 @@ npm install pumelo --save
 
 ```js
 const pumelo = require('pumelo');
-const pumeloNode = require('pumelo/node');
+const pumeloNode = require('pumelo/lib/node');
 ```
