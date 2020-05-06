@@ -6,6 +6,14 @@
 </dd>
 </dl>
 
+## Members
+
+<dl>
+<dt><a href="#tinyMoment">tinyMoment</a></dt>
+<dd><p>tinyMoment</p>
+</dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -106,6 +114,12 @@ FormatTimestamp
 | --- | --- |
 | timestamp | <code>String</code> | 
 
+<a name="tinyMoment"></a>
+
+## tinyMoment
+tinyMoment
+
+**Kind**: global variable  
 <a name="isNull"></a>
 
 ## isNull(param) ⇒ <code>Boolean</code>

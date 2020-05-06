@@ -1,4 +1,9 @@
-const moment = require('moment');
+const moment = require("moment");
+
+/**
+ * tinyMoment
+ */
+module.exports.tinyMoment = moment;
 
 /**
  * isNull
@@ -6,11 +11,7 @@ const moment = require('moment');
  * @returns {Boolean}
  */
 module.exports.isNull = function (param) {
-  return (
-    param === void 0 ||
-    param === null ||
-    param === undefined
-  )
+  return param === void 0 || param === null || param === undefined;
 };
 
 /**
@@ -33,10 +34,10 @@ module.exports.isNullString = function (str) {
   if (!str) {
     return true;
   }
-  if (str === '') {
+  if (str === "") {
     return true;
   }
-  var regu = '^[ ]+$';
+  var regu = "^[ ]+$";
   var re = new RegExp(regu);
   return re.test(str);
 };
@@ -55,12 +56,12 @@ module.exports.calculateDifference = function (difference, language) {
   const year = 365 * day; // approximately
 
   const hashEnCn = {
-    second: '秒',
-    minute: '分钟',
-    hour: '小时',
-    day: '天',
-    month: '月',
-    year: '年',
+    second: "秒",
+    minute: "分钟",
+    hour: "小时",
+    day: "天",
+    month: "月",
+    year: "年",
   };
 
   let obj = {};
@@ -69,19 +70,19 @@ module.exports.calculateDifference = function (difference, language) {
       const [[unitName, unit]] = Object.entries(item);
       const units = (difference / unit) | 0;
       difference -= unit * units;
-      const maybePlural = units === 1 ? '' : 's';
+      const maybePlural = units === 1 ? "" : "s";
       obj[unitName] = units;
       if (units > 0) {
-        if (!!language && language === 'cn') {
-          return units + ' ' + hashEnCn[unitName];
+        if (!!language && language === "cn") {
+          return units + " " + hashEnCn[unitName];
         } else {
-          return units + ' ' + unitName + maybePlural;
+          return units + " " + unitName + maybePlural;
         }
       } else {
-        return '';
+        return "";
       }
     })
-    .filter(x => x);
+    .filter((x) => x);
   return { obj, formattedTime: time };
 };
 
@@ -90,16 +91,16 @@ module.exports.calculateDifference = function (difference, language) {
  * @param {Number} timestamp
  * @returns {String}
  */
-module.exports.timeShowFormat = timestamp => {
+module.exports.timeShowFormat = (timestamp) => {
   let timestampInt = Number(timestamp);
 
-  let startMinuteTimestamp = moment().startOf('minute').valueOf();
-  let startDayTimestamp = moment().startOf('day').valueOf();
-  let startYearTimestamp = moment().startOf('year').valueOf();
+  let startMinuteTimestamp = moment().startOf("minute").valueOf();
+  let startDayTimestamp = moment().startOf("day").valueOf();
+  let startYearTimestamp = moment().startOf("year").valueOf();
 
   let formatTimestamp = new FormatTimestamp(timestampInt);
   let timeObj = formatTimestamp.obj();
-  let formatStr = '';
+  let formatStr = "";
 
   if (timestampInt < startYearTimestamp) {
     // not current year
@@ -135,15 +136,15 @@ module.exports.timeShowFormat = timestamp => {
  * @returns {String}
  */
 function updateQueryStringParameter(uri, key, value) {
-  var re = new RegExp('([?&])' + key + '=.*?(&|$)', 'i');
-  var separator = uri.indexOf('?') !== -1 ? '&' : '?';
+  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  var separator = uri.indexOf("?") !== -1 ? "&" : "?";
   if (uri.match(re)) {
-    return uri.replace(re, '$1' + key + '=' + value + '$2');
+    return uri.replace(re, "$1" + key + "=" + value + "$2");
   } else {
-    return uri + separator + key + '=' + value;
+    return uri + separator + key + "=" + value;
   }
-};
-module.exports.updateQueryStringParameter = updateQueryStringParameter
+}
+module.exports.updateQueryStringParameter = updateQueryStringParameter;
 
 /**
  * Update or create query string
@@ -151,19 +152,15 @@ module.exports.updateQueryStringParameter = updateQueryStringParameter
  * @param {Object} obj
  * @returns {String}
  */
-module.exports.updateQueryStringParameterByObj = function (
-  uri,
-  obj = {}
-) {
-  let _uri = uri
+module.exports.updateQueryStringParameterByObj = function (uri, obj = {}) {
+  let _uri = uri;
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      _uri = updateQueryStringParameter(_uri, key, obj[key])
+      _uri = updateQueryStringParameter(_uri, key, obj[key]);
     }
   }
-  return _uri
+  return _uri;
 };
-
 
 /**
  * 拍平一个多维数组
@@ -190,7 +187,7 @@ module.exports.flat = function () {
 function addZero(n) {
   n = String(n);
   if (n.length === 1) {
-    return '0' + n;
+    return "0" + n;
   } else {
     return n;
   }
@@ -258,7 +255,7 @@ module.exports.isObjectValueEqual = (a, b) => {
  */
 module.exports.findIndex = function (arr, callback) {
   if (arr == null || arr.length == 0) {
-    console.log('array is null');
+    console.log("array is null");
     return;
   }
 
@@ -303,7 +300,7 @@ class FormatTimestamp {
   }
 
   add0(num) {
-    return Number(num) < 10 ? '0' + String(num) : num;
+    return Number(num) < 10 ? "0" + String(num) : num;
   }
 
   format_dot(timestamp) {
@@ -311,8 +308,8 @@ class FormatTimestamp {
   }
 
   format(type) {
-    if (type === 'M-D') {
-      return this.m + '-' + this.d;
+    if (type === "M-D") {
+      return this.m + "-" + this.d;
     }
   }
 
@@ -383,9 +380,9 @@ module.exports.once = function (fn) {
 module.exports.deepClone = function (a) {
   let n;
   let t = Object.prototype.toString;
-  if (t.call(a) === '[object Array]') {
+  if (t.call(a) === "[object Array]") {
     n = [];
-  } else if (t.call(a) === '[object Object]') {
+  } else if (t.call(a) === "[object Object]") {
     n = {};
   } else {
     return a;
@@ -393,8 +390,8 @@ module.exports.deepClone = function (a) {
   for (let i in a) {
     if (a.hasOwnProperty(i)) {
       if (
-        t.call(a[i]) === '[object Array]' ||
-        t.call(a[i]) === '[object Object]'
+        t.call(a[i]) === "[object Array]" ||
+        t.call(a[i]) === "[object Object]"
       ) {
         n[i] = this.deepClone(a[i]);
       } else {
@@ -429,7 +426,7 @@ module.exports.isNumber = function (obj) {
  */
 module.exports.isObj = function (obj) {
   let type = Object.prototype.toString.call(obj);
-  return type === '[object Object]';
+  return type === "[object Object]";
 };
 
 /**
@@ -439,7 +436,7 @@ module.exports.isObj = function (obj) {
  */
 module.exports.isArray = function (obj) {
   let type = Object.prototype.toString.call(obj);
-  return type === '[object Array]';
+  return type === "[object Array]";
 };
 
 /**
@@ -449,7 +446,7 @@ module.exports.isArray = function (obj) {
  */
 module.exports.isFunction = function (obj) {
   let type = Object.prototype.toString.call(obj);
-  return type === '[object Function]';
+  return type === "[object Function]";
 };
 
 /**
@@ -457,7 +454,7 @@ module.exports.isFunction = function (obj) {
  * @param {Array} - source array
  * @returns {Array} - new array
  */
-module.exports.distinctValuesOfArray = arr => [...new Set(arr)];
+module.exports.distinctValuesOfArray = (arr) => [...new Set(arr)];
 
 /**
  * Measures the time taken by a function to execute.
@@ -465,9 +462,9 @@ module.exports.distinctValuesOfArray = arr => [...new Set(arr)];
  * @returns {*}
  */
 module.exports.timeTaken = function (callback) {
-  console.time('timeTaken');
+  console.time("timeTaken");
   const r = callback();
-  console.timeEnd('timeTaken');
+  console.timeEnd("timeTaken");
   return r;
 };
 
@@ -478,7 +475,7 @@ module.exports.timeTaken = function (callback) {
 module.exports.randomColor = function () {
   let n = ((Math.random() * 0xfffff) | 0).toString(16);
   return (
-    '#' + (n.length !== 6 ? ((Math.random() * 0xf) | 0).toString(16) + n : n)
+    "#" + (n.length !== 6 ? ((Math.random() * 0xf) | 0).toString(16) + n : n)
   );
 };
 
@@ -488,71 +485,71 @@ module.exports.randomColor = function () {
  * @returns {String}
  */
 module.exports.randomString = function (length) {
-  var str = '';
+  var str = "";
   var length = length;
   var arr = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
   ];
 
   for (var i = 0; i < length; i++) {
@@ -572,27 +569,27 @@ module.exports.randomString = function (length) {
  */
 module.exports.checkStringType = function (str, type) {
   switch (type) {
-    case 'URL_START_WITH_HTTP_OR_HTTPS':
+    case "URL_START_WITH_HTTP_OR_HTTPS":
       var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
       var regex = new RegExp(expression);
       return !!str.match(regex);
-    case 'URL_NOT_REQUIRE_HTTP_OR_HTTPS':
+    case "URL_NOT_REQUIRE_HTTP_OR_HTTPS":
       var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp(expression);
       return !!str.match(regex);
-    case 'email':
+    case "email":
       return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(str);
-    case 'phone':
+    case "phone":
       return /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(str);
-    case 'tel':
+    case "tel":
       return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
-    case 'number':
+    case "number":
       return /^[0-9]$/.test(str);
-    case 'lower':
+    case "lower":
       return /^[a-z]+$/.test(str);
-    case 'upper':
+    case "upper":
       return /^[A-Z]+$/.test(str);
-    case 'ip':
+    case "ip":
       return /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/.test(
         str
       );
