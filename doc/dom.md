@@ -52,13 +52,13 @@ usually used in conjunction with rem</p>
 <dt><a href="#docReferrer">docReferrer()</a> ⇒ <code>String</code></dt>
 <dd><p>导航到当前网页的超链接所在网页的URL</p>
 </dd>
-<dt><a href="#historyBackRefresh">historyBackRefresh()</a></dt>
-<dd><p>返回上一页
-返回后刷新</p>
-</dd>
 <dt><a href="#redirectHtml">redirectHtml()</a></dt>
 <dd><p>重载页面
 不添加新的历史记录</p>
+</dd>
+<dt><a href="#historyBackRefresh">historyBackRefresh()</a></dt>
+<dd><p>返回上一页
+返回后刷新</p>
 </dd>
 <dt><a href="#historyGo">historyGo()</a></dt>
 <dd><p>返回历史记录
@@ -274,18 +274,18 @@ pumeloDom.ajax({
 导航到当前网页的超链接所在网页的URL
 
 **Kind**: global function  
-<a name="historyBackRefresh"></a>
-
-## historyBackRefresh()
-返回上一页
-返回后刷新
-
-**Kind**: global function  
 <a name="redirectHtml"></a>
 
 ## redirectHtml()
 重载页面
 不添加新的历史记录
+
+**Kind**: global function  
+<a name="historyBackRefresh"></a>
+
+## historyBackRefresh()
+返回上一页
+返回后刷新
 
 **Kind**: global function  
 <a name="historyGo"></a>

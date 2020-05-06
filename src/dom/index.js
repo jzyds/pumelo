@@ -518,24 +518,26 @@ module.exports.historyLength = function () {
  * 导航到当前网页的超链接所在网页的URL
  * @returns {String}
  */
-module.exports.docReferrer = function () {
+const docReferrer = function () {
   return document.referrer;
 };
+module.exports.docReferrer = docReferrer;
+
+/**
+ * 重载页面
+ * 不添加新的历史记录
+ */
+const redirectHtml = function (url) {
+  window.location.replace (url);
+};
+module.exports.redirectHtml = redirectHtml;
 
 /**
  * 返回上一页
  * 返回后刷新
  */
 module.exports.historyBackRefresh = function () {
-  window.location.href = docReferrer ();
-};
-
-/**
- * 重载页面
- * 不添加新的历史记录
- */
-module.exports.redirectHtml = function (url) {
-  window.location.replace (url);
+  redirectHtml(docReferrer ());
 };
 
 /**
