@@ -228,8 +228,8 @@ flat()([
 
 | Param | Type | Description |
 | --- | --- | --- |
-|  | <code>Number</code> | <p>时间戳</p> |
-|  | <code>String</code> | <p>格式化规则 eg. Y-M-D H:MM:S</p> |
+| timestamp | <code>Number</code> | <p>时间戳</p> |
+| format | <code>String</code> | <p>格式化规则 eg. Y-M-D H:m:S</p> |
 
 <a name="timeFormatWithRule"></a>
 
