@@ -1,4 +1,23 @@
 import moment from "moment";
+import { EMOJI_REGEX } from "../constants/RegEx";
+
+/**
+ * hasEmojiInString
+ * @param {String} str
+ * @returns {Boolean}
+ */
+export const hasEmojiInString = (str: string): boolean => {
+  return EMOJI_REGEX.test(str);
+};
+
+/**
+ * removeEmojis
+ * @param {String} str
+ * @returns {String}
+ */
+export const removeEmojis = (string: string): string => {
+  return string.replace(EMOJI_REGEX, "");
+};
 
 /**
  * tinyMoment

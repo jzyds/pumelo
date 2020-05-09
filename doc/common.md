@@ -1,6 +1,10 @@
 ## Members
 
 <dl>
+<dt><a href="#hasEmojiInString">hasEmojiInString</a> ⇒ <code>String</code></dt>
+<dd><p>removeEmojis</p></dd>
+<dt><a href="#removeEmojis">removeEmojis</a></dt>
+<dd><p>tinyMoment</p></dd>
 <dt><a href="#tinyMoment">tinyMoment</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isNull</p></dd>
 <dt><a href="#isNull">isNull</a> ⇒ <code>Boolean</code></dt>
@@ -55,22 +59,34 @@
 <dd><p>数组排序.</p></dd>
 </dl>
 
-## Constants
-
-<dl>
-<dt><a href="#tinyMoment">tinyMoment</a></dt>
-<dd><p>tinyMoment</p></dd>
-</dl>
-
 ## Functions
 
 <dl>
+<dt><a href="#hasEmojiInString">hasEmojiInString(str)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>hasEmojiInString</p></dd>
 <dt><a href="#updateQueryStringParameterByObj">updateQueryStringParameterByObj(uri, obj)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p></dd>
 <dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
 <dd><p>timeDown</p></dd>
 </dl>
 
+<a name="hasEmojiInString"></a>
+
+## hasEmojiInString ⇒ <code>String</code>
+<p>removeEmojis</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| str | <code>String</code> | 
+
+<a name="removeEmojis"></a>
+
+## removeEmojis
+<p>tinyMoment</p>
+
+**Kind**: global variable  
 <a name="tinyMoment"></a>
 
 ## tinyMoment ⇒ <code>Boolean</code>
@@ -374,12 +390,17 @@ email | phone | tel | number | lower | upper | ip
 | --- | --- | --- |
 |  | <code>Array</code> | <p>source array</p> |
 
-<a name="tinyMoment"></a>
+<a name="hasEmojiInString"></a>
 
-## tinyMoment
-<p>tinyMoment</p>
+## hasEmojiInString(str) ⇒ <code>Boolean</code>
+<p>hasEmojiInString</p>
 
-**Kind**: global constant  
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| str | <code>String</code> | 
+
 <a name="updateQueryStringParameterByObj"></a>
 
 ## updateQueryStringParameterByObj(uri, obj) ⇒ <code>String</code>

@@ -1,5 +1,17 @@
 import moment from "moment";
 /**
+ * hasEmojiInString
+ * @param {String} str
+ * @returns {Boolean}
+ */
+export declare const hasEmojiInString: (str: string) => boolean;
+/**
+ * removeEmojis
+ * @param {String} str
+ * @returns {String}
+ */
+export declare const removeEmojis: (string: string) => string;
+/**
  * tinyMoment
  */
 export declare const tinyMoment: typeof moment;
