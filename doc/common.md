@@ -27,7 +27,9 @@
 <dd><p>rmArrayItem</p></dd>
 <dt><a href="#rmArrayItem">rmArrayItem</a> ⇒</dt>
 <dd><p>FormatTimestamp</p></dd>
-<dt><a href="#FormatTimestamp">FormatTimestamp</a> ⇒ <code>Boolean</code></dt>
+<dt><a href="#FormatTimestamp">FormatTimestamp</a> ⇒ <code>String</code></dt>
+<dd><p>timeFormatWithRule</p></dd>
+<dt><a href="#timeFormatWithRule">timeFormatWithRule</a> ⇒ <code>Boolean</code></dt>
 <dd><p>every</p></dd>
 <dt><a href="#every">every</a> ⇒ <code>Boolean</code></dt>
 <dd><p>some</p></dd>
@@ -219,7 +221,19 @@ flat()([
 
 <a name="FormatTimestamp"></a>
 
-## FormatTimestamp ⇒ <code>Boolean</code>
+## FormatTimestamp ⇒ <code>String</code>
+<p>timeFormatWithRule</p>
+
+**Kind**: global variable  
+
+| Param | Type | Description |
+| --- | --- | --- |
+|  | <code>Number</code> | <p>时间戳</p> |
+|  | <code>String</code> | <p>格式化规则 eg. Y-M-D H:MM:S</p> |
+
+<a name="timeFormatWithRule"></a>
+
+## timeFormatWithRule ⇒ <code>Boolean</code>
 <p>every</p>
 
 **Kind**: global variable  

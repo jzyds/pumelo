@@ -132,6 +132,13 @@ export declare class FormatTimestamp {
     };
 }
 /**
+ * timeFormatWithRule
+ * @param {Number} - 时间戳
+ * @param {String} - 格式化规则 eg. Y-M-D H:MM:S
+ * @return {String}
+ */
+export declare const timeFormatWithRule: (timestamp: any, format: any) => any;
+/**
  * every
  * @param {Array} arr
  * @param {Function} fn

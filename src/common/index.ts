@@ -371,6 +371,25 @@ export class FormatTimestamp {
 }
 
 /**
+ * timeFormatWithRule
+ * @param {Number} - 时间戳
+ * @param {String} - 格式化规则 eg. Y-M-D H:MM:S
+ * @return {String}
+ */
+export const timeFormatWithRule = (timestamp, format) => {
+  let formatTimestamp = new FormatTimestamp(Number(timestamp));
+  let createTimeObj = formatTimestamp.obj();
+  format = format.replace("Y", createTimeObj.year);
+  format = format.replace("M", createTimeObj.month);
+  format = format.replace("D", createTimeObj.day);
+
+  format = format.replace("H", createTimeObj.hour);
+  format = format.replace("MM", createTimeObj.minute);
+  format = format.replace("S", createTimeObj.second);
+  return format;
+};
+
+/**
  * every
  * @param {Array} arr
  * @param {Function} fn
