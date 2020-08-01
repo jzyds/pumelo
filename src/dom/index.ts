@@ -1,4 +1,45 @@
 /**
+ * load file info from local
+ * @param {File} file
+ * @returns {Promise}
+ */
+export const loadVideo = (file) => new Promise(
+  (resolve: (value: HTMLVideoElement) => void,
+    reject
+  ) => {
+    try {
+      let video: HTMLVideoElement;
+      video = document.createElement('video')
+      video.preload = 'metadata'
+      video.onloadedmetadata = function () {
+        resolve(video)
+      }
+      video.onerror = function () {
+        reject("Invalid video. Please select a video file.")
+      }
+      video.src = window.URL.createObjectURL(file)
+    } catch (e) {
+      reject(e)
+    }
+  })
+
+/**
+ * load file info from local
+ * @param {File} file
+ * @returns {Object}
+ */
+export const getVideoInfoAsync = async (file) => {
+  try {
+    let video: HTMLVideoElement = await loadVideo(file)
+    return {
+      duration: video.duration
+    }
+  } catch (e) {
+    return {}
+  }
+}
+
+/**
  * get image size in browser
  * @param {String} src
  * @param {function(width,height)} callback

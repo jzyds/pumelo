@@ -1,4 +1,20 @@
 /**
+ * load file info from local
+ * @param {File} file
+ * @returns {Promise}
+ */
+export declare const loadVideo: (file: any) => Promise<HTMLVideoElement>;
+/**
+ * load file info from local
+ * @param {File} file
+ * @returns {Object}
+ */
+export declare const getVideoInfoAsync: (file: any) => Promise<{
+    duration: number;
+} | {
+    duration?: undefined;
+}>;
+/**
  * get image size in browser
  * @param {String} src
  * @param {function(width,height)} callback

@@ -1,6 +1,8 @@
 ## Members
 
 <dl>
+<dt><a href="#removeSpace">removeSpace</a> ⇒ <code>Boolean</code></dt>
+<dd><p>hasEmojiInString</p></dd>
 <dt><a href="#hasEmojiInString">hasEmojiInString</a> ⇒ <code>String</code></dt>
 <dd><p>removeEmojis</p></dd>
 <dt><a href="#removeEmojis">removeEmojis</a></dt>
@@ -64,13 +66,24 @@
 ## Functions
 
 <dl>
-<dt><a href="#hasEmojiInString">hasEmojiInString(str)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>hasEmojiInString</p></dd>
+<dt><a href="#removeSpace">removeSpace(str)</a> ⇒ <code>String</code></dt>
+<dd><p>removeSpace</p></dd>
 <dt><a href="#updateQueryStringParameterByObj">updateQueryStringParameterByObj(uri, obj)</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p></dd>
 <dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
 <dd><p>timeDown</p></dd>
 </dl>
+
+<a name="removeSpace"></a>
+
+## removeSpace ⇒ <code>Boolean</code>
+<p>hasEmojiInString</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| str | <code>String</code> | 
 
 <a name="hasEmojiInString"></a>
 
@@ -404,10 +417,10 @@ email | phone | tel | number | lower | upper | ip
 | --- | --- | --- |
 |  | <code>Array</code> | <p>source array</p> |
 
-<a name="hasEmojiInString"></a>
+<a name="removeSpace"></a>
 
-## hasEmojiInString(str) ⇒ <code>Boolean</code>
-<p>hasEmojiInString</p>
+## removeSpace(str) ⇒ <code>String</code>
+<p>removeSpace</p>
 
 **Kind**: global function  
 

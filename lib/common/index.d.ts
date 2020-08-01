@@ -1,4 +1,10 @@
-import moment from "moment";
+import moment from 'moment';
+/**
+ * removeSpace
+ * @param {String} str
+ * @returns {String}
+ */
+export declare const removeSpace: (str: string) => string;
 /**
  * hasEmojiInString
  * @param {String} str

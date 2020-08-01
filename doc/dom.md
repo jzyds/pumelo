@@ -1,6 +1,10 @@
 ## Members
 
 <dl>
+<dt><a href="#loadVideo">loadVideo</a> ⇒ <code>Object</code></dt>
+<dd><p>load file info from local</p></dd>
+<dt><a href="#getVideoInfoAsync">getVideoInfoAsync</a> ⇒ <code>void</code></dt>
+<dd><p>get image size in browser</p></dd>
 <dt><a href="#getImageSizeCallback">getImageSizeCallback</a> ⇒ <code>void</code></dt>
 <dd><p>get image size in browser</p></dd>
 <dt><a href="#getImageSizePromise">getImageSizePromise</a> ⇒ <code>void</code></dt>
@@ -38,9 +42,32 @@ usually used in conjunction with rem</p></dd>
 ## Functions
 
 <dl>
-<dt><a href="#getImageSizeCallback">getImageSizeCallback(src, callback)</a> ⇒ <code>void</code></dt>
-<dd><p>get image size in browser</p></dd>
+<dt><a href="#loadVideo">loadVideo(file)</a> ⇒ <code>Promise</code></dt>
+<dd><p>load file info from local</p></dd>
 </dl>
+
+<a name="loadVideo"></a>
+
+## loadVideo ⇒ <code>Object</code>
+<p>load file info from local</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| file | <code>File</code> | 
+
+<a name="getVideoInfoAsync"></a>
+
+## getVideoInfoAsync ⇒ <code>void</code>
+<p>get image size in browser</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| src | <code>String</code> | 
+| callback | <code>function</code> | 
 
 <a name="getImageSizeCallback"></a>
 
@@ -157,15 +184,14 @@ usually used in conjunction with rem</p>
 <p>判断浏览器环境;</p>
 
 **Kind**: global variable  
-<a name="getImageSizeCallback"></a>
+<a name="loadVideo"></a>
 
-## getImageSizeCallback(src, callback) ⇒ <code>void</code>
-<p>get image size in browser</p>
+## loadVideo(file) ⇒ <code>Promise</code>
+<p>load file info from local</p>
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| src | <code>String</code> | 
-| callback | <code>function</code> | 
+| file | <code>File</code> | 
 
