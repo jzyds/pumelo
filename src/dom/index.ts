@@ -3,41 +3,39 @@
  * @param {File} file
  * @returns {Promise}
  */
-export const loadVideo = (file) => new Promise(
-  (resolve: (value: HTMLVideoElement) => void,
-    reject
-  ) => {
+export const loadVideo = (file: File) =>
+  new Promise((resolve: (value: HTMLVideoElement) => void, reject) => {
     try {
       let video: HTMLVideoElement;
-      video = document.createElement('video')
-      video.preload = 'metadata'
+      video = document.createElement("video");
+      video.preload = "metadata";
       video.onloadedmetadata = function () {
-        resolve(video)
-      }
+        resolve(video);
+      };
       video.onerror = function () {
-        reject("Invalid video. Please select a video file.")
-      }
-      video.src = window.URL.createObjectURL(file)
+        reject("Invalid video. Please select a video file.");
+      };
+      video.src = window.URL.createObjectURL(file);
     } catch (e) {
-      reject(e)
+      reject(e);
     }
-  })
+  });
 
 /**
  * load file info from local
  * @param {File} file
  * @returns {Object}
  */
-export const getVideoInfoAsync = async (file) => {
+export const getVideoInfoAsync = async (file: File) => {
   try {
-    let video: HTMLVideoElement = await loadVideo(file)
+    let video: HTMLVideoElement = await loadVideo(file);
     return {
-      duration: video.duration
-    }
+      duration: video.duration,
+    };
   } catch (e) {
-    return {}
+    return {};
   }
-}
+};
 
 /**
  * get image size in browser
@@ -114,7 +112,7 @@ export const deleteCookie = function (name: string) {
  * Check if the browser supports the webp format
  * @returns {boolean}
  */
-export const checkWebp = function () {
+export const checkWebp = function (): boolean {
   try {
     return (
       document
@@ -191,7 +189,7 @@ export const requireJs = function (url: string, callback: Function) {
  * 历史列表元素数量
  * @returns {Number}
  */
-export const historyLength = function () {
+export const historyLength = function (): number {
   return window.history.length;
 };
 
@@ -199,7 +197,7 @@ export const historyLength = function () {
  * 导航到当前网页的超链接所在网页的URL
  * @returns {String}
  */
-export const docReferrer = function () {
+export const docReferrer = function (): string {
   return document.referrer;
 };
 

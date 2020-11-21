@@ -1,8 +1,8 @@
-const pumelo = require('../lib');
-const pumeloDom = require('../lib/dom');
-const _n = require('../lib/node')
+const pumelo = require("../lib");
+const pumeloDom = require("../lib/dom");
+const _n = require("../lib/node");
 
-console.log(pumelo.timeFormatWithRule(Date.now(), "Y-M-D H:m:S"));
+// console.log(pumelo.timeFormatWithRule(Date.now(), "Y-M-D H:m:S"));
 // console.log(pumelo.hasEmojiInString("asdasdas实打实大所123🤔😕😒😒😑🤔🤔"))
 // console.log(pumelo.hasEmojiInString("asdasdas实打实大所123"))
 // console.log(pumelo.hasEmojiInString("🤔"))

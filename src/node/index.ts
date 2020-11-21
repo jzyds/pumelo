@@ -7,11 +7,11 @@ const path = require("path");
  * @example
  * readRecursionFileList()("./dir")
  */
-export const readRecursionFileList = function () {
-  let filesList: any = [];
-  return function readFileList(dir: any) {
+export const readRecursionFileList = function (): Function {
+  let filesList: Array<string> = [];
+  return function readFileList(dir: string) {
     let files = fs.readdirSync(dir);
-    files.forEach((item: any) => {
+    files.forEach((item: string) => {
       let fullPath = path.join(dir, item);
       let stat = fs.statSync(fullPath);
       if (stat.isDirectory()) {
