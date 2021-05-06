@@ -37,8 +37,6 @@
 <dd><p>some</p></dd>
 <dt><a href="#some">some</a> ⇒ <code>function</code></dt>
 <dd><p>once</p></dd>
-<dt><a href="#once">once</a> ⇒ <code>*</code></dt>
-<dd><p>deep clone</p></dd>
 <dt><a href="#hp">hp</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isNumber</p></dd>
 <dt><a href="#isNumber">isNumber</a> ⇒ <code>Boolean</code></dt>
@@ -47,7 +45,9 @@
 <dd><p>isArray</p></dd>
 <dt><a href="#isArray">isArray</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isFunction</p></dd>
-<dt><a href="#isFunction">isFunction</a> ⇒ <code>Array</code></dt>
+<dt><a href="#isFunction">isFunction</a> ⇒ <code>*</code></dt>
+<dd><p>deep clone</p></dd>
+<dt><a href="#deepClone">deepClone</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns all the distinct values of an array.</p></dd>
 <dt><a href="#distinctValuesOfArray">distinctValuesOfArray</a> ⇒ <code>*</code></dt>
 <dd><p>Measures the time taken by a function to execute.</p></dd>
@@ -178,11 +178,7 @@
 **Kind**: global variable  
 **Example**  
 ```js
-flat()([
- [1],
- [[2],[3]],
- [[4,[5]]]
-])
+flat()([ [1], [[2],[3]], [[4,[5]]]])
 ```
 <a name="timeDown"></a>
 
@@ -279,17 +275,6 @@ flat()([
 | --- | --- |
 | fn | <code>function</code> | 
 
-<a name="once"></a>
-
-## once ⇒ <code>\*</code>
-<p>deep clone</p>
-
-**Kind**: global variable  
-
-| Param | Type |
-| --- | --- |
-| a | <code>Array</code> \| <code>Object</code> | 
-
 <a name="hp"></a>
 
 ## hp ⇒ <code>Boolean</code>
@@ -336,7 +321,18 @@ flat()([
 
 <a name="isFunction"></a>
 
-## isFunction ⇒ <code>Array</code>
+## isFunction ⇒ <code>\*</code>
+<p>deep clone</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| a | <code>Array</code> \| <code>Object</code> | 
+
+<a name="deepClone"></a>
+
+## deepClone ⇒ <code>Array</code>
 <p>Returns all the distinct values of an array.</p>
 
 **Kind**: global variable  
@@ -388,8 +384,7 @@ flat()([
 
 **Example**  
 ```js
-URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
-email | phone | tel | number | lower | upper | ip
+URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | tel | number | lower | upper | ip
 ```
 <a name="checkStringType"></a>
 

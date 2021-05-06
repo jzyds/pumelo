@@ -3,13 +3,13 @@
  * @param {File} file
  * @returns {Promise}
  */
-export declare const loadVideo: (file: any) => Promise<HTMLVideoElement>;
+export declare const loadVideo: (file: File) => Promise<HTMLVideoElement>;
 /**
  * load file info from local
  * @param {File} file
  * @returns {Object}
  */
-export declare const getVideoInfoAsync: (file: any) => Promise<{
+export declare const getVideoInfoAsync: (file: File) => Promise<{
     duration: number;
 } | {
     duration?: undefined;

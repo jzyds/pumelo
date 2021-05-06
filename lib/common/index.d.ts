@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from "moment";
 /**
  * removeSpace
  * @param {String} str
@@ -53,7 +53,7 @@ export declare const calculateDifference: (difference: number, language: string)
  * @param {Number} timestamp
  * @returns {String}
  */
-export declare const timeShowFormat: (timestamp: any) => string;
+export declare const timeShowFormat: (timestamp: number) => string;
 /**
  * Update or create query string
  * @param {String} uri
@@ -68,7 +68,7 @@ export declare function updateQueryStringParameter(uri: string, key: string, val
  * @param {Object} obj
  * @returns {String}
  */
-export declare const updateQueryStringParameterByObj: (uri: any, obj?: any) => any;
+export declare const updateQueryStringParameterByObj: (uri: string, obj?: any) => string;
 /**
  * 拍平一个多维数组
  * @returns {Function}
@@ -79,14 +79,14 @@ export declare const updateQueryStringParameterByObj: (uri: any, obj?: any) => a
  *  [[4,[5]]]
  * ])
  */
-export declare const flat: () => (arr: string | any[]) => any[];
+export declare const flat: () => Function;
 /**
  * timeDown
  * @param {Number} totalSeconds
  * @param {Function} fn
  * @returns {*}
  */
-export declare const timeDown: (totalSeconds: number, fn: (arg0: any, arg1: any, arg2: any, arg3: any) => void) => void;
+export declare const timeDown: (totalSeconds: number, fn: (arg0: string, arg1: string, arg2: string, arg3: string) => void) => void;
 /**
  * isObjectValueEqual
  * @param {Object} a
@@ -143,35 +143,29 @@ export declare class FormatTimestamp {
  * @param {String} format 格式化规则 eg. Y-M-D H:m:S
  * @return {String}
  */
-export declare const timeFormatWithRule: (timestamp: any, format: any) => any;
+export declare const timeFormatWithRule: (timestamp: number, format: string) => string;
 /**
  * every
  * @param {Array} arr
  * @param {Function} fn
  * @returns {Boolean}
  */
-export declare const every: (arr: any, fn: Function) => boolean;
+export declare const every: (arr: Array<any>, fn: Function) => boolean;
 /**
  * some
  * @param {Array} arr
  * @param {Function} fn
  * @returns {Boolean}
  */
-export declare const some: (arr: any, fn: Function) => boolean;
+export declare const some: (arr: Array<any>, fn: Function) => boolean;
 /**
  * once
  * @param {Function} fn
  * @returns {Function}
  */
 export declare const once: (fn: Function) => () => any;
-/**
- * deep clone
- * @param {Array | Object} a
- * @returns {*}
- */
-export declare const deepClone: (a: any) => any;
-export declare const copyArray: (arr: any) => any;
-export declare const hp: (obj: any, key: any) => any;
+export declare const copyArray: <T>(arr: T[]) => T[];
+export declare const hp: (obj: Object, key: string) => boolean;
 /**
  * isNumber
  * @param {*} obj
@@ -197,11 +191,17 @@ export declare const isArray: (obj: any) => boolean;
  */
 export declare const isFunction: (obj: any) => boolean;
 /**
+ * deep clone
+ * @param {Array | Object} a
+ * @returns {*}
+ */
+export declare const deepClone: (a: Array<any> | Object) => Object | any[];
+/**
  * Returns all the distinct values of an array.
  * @param {Array} - source array
  * @returns {Array} - new array
  */
-export declare const distinctValuesOfArray: (arr: any) => unknown[];
+export declare const distinctValuesOfArray: (arr: Array<any>) => any[];
 /**
  * Measures the time taken by a function to execute.
  * @param {Function} - callback function

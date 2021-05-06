@@ -4,4 +4,4 @@
  * @example
  * readRecursionFileList()("./dir")
  */
-export declare const readRecursionFileList: () => (dir: any) => any;
+export declare const readRecursionFileList: () => Function;
