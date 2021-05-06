@@ -192,10 +192,10 @@ export declare const isArray: (obj: any) => boolean;
 export declare const isFunction: (obj: any) => boolean;
 /**
  * deep clone
- * @param {Array | Object} a
+ * @param {Array | Object} param
  * @returns {*}
  */
-export declare const deepClone: (a: Array<any> | Object) => Object | any[];
+export declare const deepClone: <T>(param: T) => T;
 /**
  * Returns all the distinct values of an array.
  * @param {Array} - source array

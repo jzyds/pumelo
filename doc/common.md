@@ -328,7 +328,7 @@ flat()([ [1], [[2],[3]], [[4,[5]]]])
 
 | Param | Type |
 | --- | --- |
-| a | <code>Array</code> \| <code>Object</code> | 
+| param | <code>Array</code> \| <code>Object</code> | 
 
 <a name="deepClone"></a>
 

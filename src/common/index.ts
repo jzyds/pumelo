@@ -490,11 +490,12 @@ export const isFunction = function (obj: any): boolean {
 
 /**
  * deep clone
- * @param {Array | Object} a
+ * @param {Array | Object} param
  * @returns {*}
  */
-export const deepClone = function (a: Array<any> | Object) {
-  let n: Array<any> | Object;
+export const deepClone = function <T>(param: T): T {
+  let n: any;
+  let a = param as any;
   if (isArray(a)) {
     n = [];
   } else if (isObj(a)) {
