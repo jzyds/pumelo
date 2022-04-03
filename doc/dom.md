@@ -7,15 +7,13 @@
 <dd><p>get image size in browser</p></dd>
 <dt><a href="#getImageSizeCallback">getImageSizeCallback</a> ⇒ <code>void</code></dt>
 <dd><p>get image size in browser</p></dd>
-<dt><a href="#getImageSizePromise">getImageSizePromise</a> ⇒ <code>void</code></dt>
-<dd><p>set browser cookie</p></dd>
-<dt><a href="#setCookie">setCookie</a> ⇒ <code>void</code></dt>
+<dt><a href="#setCookie">setCookie</a> ⇒ <code>string</code> | <code>undefined</code></dt>
 <dd><p>get browser cookie</p></dd>
 <dt><a href="#getCookie">getCookie</a> ⇒ <code>void</code></dt>
 <dd><p>delete browser cookie</p></dd>
 <dt><a href="#deleteCookie">deleteCookie</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check if the browser supports the webp format</p></dd>
-<dt><a href="#checkWebp">checkWebp</a> ⇒ <code>void</code></dt>
+<dt><a href="#checkWebpSupport">checkWebpSupport</a> ⇒ <code>void</code></dt>
 <dd><p>Set the page root element font size,
 usually used in conjunction with rem</p></dd>
 <dt><a href="#setBaseFontSizeByClientWidth">setBaseFontSizeByClientWidth</a> ⇒ <code>object</code></dt>
@@ -35,8 +33,10 @@ usually used in conjunction with rem</p></dd>
 <dt><a href="#historyBackRefresh">historyBackRefresh</a></dt>
 <dd><p>返回历史记录
 返回后不刷新</p></dd>
-<dt><a href="#historyGo">historyGo</a></dt>
-<dd><p>判断浏览器环境;</p></dd>
+<dt><a href="#historyGo">historyGo</a> ⇒ <code>availableOS_Type</code></dt>
+<dd></dd>
+<dt><a href="#getBrowserType">getBrowserType</a></dt>
+<dd><p>设置输入框的输入字符限制</p></dd>
 </dl>
 
 ## Functions
@@ -44,6 +44,10 @@ usually used in conjunction with rem</p></dd>
 <dl>
 <dt><a href="#loadVideo">loadVideo(file)</a> ⇒ <code>Promise</code></dt>
 <dd><p>load file info from local</p></dd>
+<dt><a href="#setCookie">setCookie(name, value)</a> ⇒ <code>void</code></dt>
+<dd><p>set browser cookie</p></dd>
+<dt><a href="#getBrowserType">getBrowserType()</a> ⇒ <code>availableBrowserType</code></dt>
+<dd><p>判断浏览器环境</p></dd>
 </dl>
 
 <a name="loadVideo"></a>
@@ -80,21 +84,9 @@ usually used in conjunction with rem</p></dd>
 | --- | --- |
 | src | <code>String</code> | 
 
-<a name="getImageSizePromise"></a>
-
-## getImageSizePromise ⇒ <code>void</code>
-<p>set browser cookie</p>
-
-**Kind**: global variable  
-
-| Param | Type |
-| --- | --- |
-| name | <code>String</code> | 
-| value | <code>String</code> | 
-
 <a name="setCookie"></a>
 
-## setCookie ⇒ <code>void</code>
+## setCookie ⇒ <code>string</code> \| <code>undefined</code>
 <p>get browser cookie</p>
 
 **Kind**: global variable  
@@ -120,9 +112,9 @@ usually used in conjunction with rem</p></dd>
 <p>Check if the browser supports the webp format</p>
 
 **Kind**: global variable  
-<a name="checkWebp"></a>
+<a name="checkWebpSupport"></a>
 
-## checkWebp ⇒ <code>void</code>
+## checkWebpSupport ⇒ <code>void</code>
 <p>Set the page root element font size,
 usually used in conjunction with rem</p>
 
@@ -180,10 +172,27 @@ usually used in conjunction with rem</p>
 **Kind**: global variable  
 <a name="historyGo"></a>
 
-## historyGo
-<p>判断浏览器环境;</p>
+## historyGo ⇒ <code>availableOS\_Type</code>
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| navigator.userAgent | <code>string</code> | 
+| navigator.maxTouchPoints | <code>number</code> | 
+
+<a name="getBrowserType"></a>
+
+## getBrowserType
+<p>设置输入框的输入字符限制</p>
 
 **Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| inputDom | <code>HTMLInputElement</code> | 
+| invalidChars | <code>[ &#x27;Array&#x27; ].&lt;string&gt;</code> | 
+| isInvalidPaste | <code>boolean</code> | 
+
 <a name="loadVideo"></a>
 
 ## loadVideo(file) ⇒ <code>Promise</code>
@@ -195,3 +204,21 @@ usually used in conjunction with rem</p>
 | --- | --- |
 | file | <code>File</code> | 
 
+<a name="setCookie"></a>
+
+## setCookie(name, value) ⇒ <code>void</code>
+<p>set browser cookie</p>
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| name | <code>String</code> | 
+| value | <code>String</code> | 
+
+<a name="getBrowserType"></a>
+
+## getBrowserType() ⇒ <code>availableBrowserType</code>
+<p>判断浏览器环境</p>
+
+**Kind**: global function  

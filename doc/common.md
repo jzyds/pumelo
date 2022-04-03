@@ -5,19 +5,15 @@
 <dd><p>hasEmojiInString</p></dd>
 <dt><a href="#hasEmojiInString">hasEmojiInString</a> ⇒ <code>String</code></dt>
 <dd><p>removeEmojis</p></dd>
-<dt><a href="#removeEmojis">removeEmojis</a></dt>
-<dd><p>tinyMoment</p></dd>
-<dt><a href="#tinyMoment">tinyMoment</a> ⇒ <code>Boolean</code></dt>
-<dd><p>isNull</p></dd>
-<dt><a href="#isNull">isNull</a> ⇒ <code>Boolean</code></dt>
+<dt><a href="#removeEmojis">removeEmojis</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isVoidNull</p></dd>
+<dt><a href="#isVoidNull">isVoidNull</a> ⇒ <code>Boolean</code></dt>
+<dd><p>isVoidNullEmptyString</p></dd>
+<dt><a href="#isVoidNullEmptyString">isVoidNullEmptyString</a> ⇒ <code>Boolean</code></dt>
 <dd><p>isNullArray</p></dd>
-<dt><a href="#isNullArray">isNullArray</a> ⇒ <code>Boolean</code></dt>
-<dd><p>isNullString</p></dd>
-<dt><a href="#isNullString">isNullString</a> ⇒ <code>Object</code></dt>
+<dt><a href="#isNullArray">isNullArray</a> ⇒ <code>Object</code></dt>
 <dd><p>calculateDifference</p></dd>
 <dt><a href="#calculateDifference">calculateDifference</a> ⇒ <code>String</code></dt>
-<dd><p>timeShowFormat</p></dd>
-<dt><a href="#timeShowFormat">timeShowFormat</a> ⇒ <code>String</code></dt>
 <dd><p>Update or create query string</p></dd>
 <dt><a href="#updateQueryStringParameterByObj">updateQueryStringParameterByObj</a> ⇒ <code>function</code></dt>
 <dd><p>拍平一个多维数组</p></dd>
@@ -59,8 +55,6 @@
 <dd></dd>
 <dt><a href="#checkStringType">checkStringType</a> ⇒ <code>Number</code></dt>
 <dd><p>生成随机数.</p></dd>
-<dt><a href="#randomNum">randomNum</a> ⇒ <code>Array</code></dt>
-<dd><p>数组排序.</p></dd>
 </dl>
 
 ## Functions
@@ -72,6 +66,12 @@
 <dd><p>Update or create query string</p></dd>
 <dt><a href="#timeDown">timeDown(totalSeconds, fn)</a> ⇒ <code>*</code></dt>
 <dd><p>timeDown</p></dd>
+<dt><a href="#getOS_FromAgent">getOS_FromAgent(agent, maxTouchPoints)</a> ⇒ <code>availableOS_Type</code></dt>
+<dd><p>通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+在服务器端传入 req.headers[&#39;user-agent&#39;]</p>
+<h2>在浏览器传入 navigator.userAgent</h2><p>但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
+原因是新版本的 iPadOS(&gt;= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断</p>
+<p>在浏览器端，可直接调用 dom util 中的 getOS_Type</p></dd>
 </dl>
 
 <a name="removeSpace"></a>
@@ -98,14 +98,8 @@
 
 <a name="removeEmojis"></a>
 
-## removeEmojis
-<p>tinyMoment</p>
-
-**Kind**: global variable  
-<a name="tinyMoment"></a>
-
-## tinyMoment ⇒ <code>Boolean</code>
-<p>isNull</p>
+## removeEmojis ⇒ <code>Boolean</code>
+<p>isVoidNull</p>
 
 **Kind**: global variable  
 
@@ -113,9 +107,20 @@
 | --- | --- |
 | param | <code>any</code> | 
 
-<a name="isNull"></a>
+<a name="isVoidNull"></a>
 
-## isNull ⇒ <code>Boolean</code>
+## isVoidNull ⇒ <code>Boolean</code>
+<p>isVoidNullEmptyString</p>
+
+**Kind**: global variable  
+
+| Param | Type |
+| --- | --- |
+| param | <code>any</code> | 
+
+<a name="isVoidNullEmptyString"></a>
+
+## isVoidNullEmptyString ⇒ <code>Boolean</code>
 <p>isNullArray</p>
 
 **Kind**: global variable  
@@ -126,18 +131,7 @@
 
 <a name="isNullArray"></a>
 
-## isNullArray ⇒ <code>Boolean</code>
-<p>isNullString</p>
-
-**Kind**: global variable  
-
-| Param | Type |
-| --- | --- |
-| str | <code>String</code> | 
-
-<a name="isNullString"></a>
-
-## isNullString ⇒ <code>Object</code>
+## isNullArray ⇒ <code>Object</code>
 <p>calculateDifference</p>
 
 **Kind**: global variable  
@@ -149,17 +143,6 @@
 <a name="calculateDifference"></a>
 
 ## calculateDifference ⇒ <code>String</code>
-<p>timeShowFormat</p>
-
-**Kind**: global variable  
-
-| Param | Type |
-| --- | --- |
-| timestamp | <code>Number</code> | 
-
-<a name="timeShowFormat"></a>
-
-## timeShowFormat ⇒ <code>String</code>
 <p>Update or create query string</p>
 
 **Kind**: global variable  
@@ -178,7 +161,11 @@
 **Kind**: global variable  
 **Example**  
 ```js
-flat()([ [1], [[2],[3]], [[4,[5]]]])
+flat()([
+ [1],
+ [[2],[3]],
+ [[4,[5]]]
+])
 ```
 <a name="timeDown"></a>
 
@@ -384,7 +371,8 @@ flat()([ [1], [[2],[3]], [[4,[5]]]])
 
 **Example**  
 ```js
-URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | tel | number | lower | upper | ip
+URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
+email | phone | tel | number | lower | upper | ip
 ```
 <a name="checkStringType"></a>
 
@@ -397,20 +385,6 @@ URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | t
 | --- | --- | --- |
 |  | <code>Number</code> | <p>最小值</p> |
 |  | <code>Number</code> | <p>最大值</p> |
-
-<a name="randomNum"></a>
-
-## randomNum ⇒ <code>Array</code>
-<p>数组排序.</p>
-
-**Kind**: global variable  
-**Returns**: <code>Array</code> - <ul>
-<li>new array</li>
-</ul>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-|  | <code>Array</code> | <p>source array</p> |
 
 <a name="removeSpace"></a>
 
@@ -446,4 +420,20 @@ URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | t
 | --- | --- |
 | totalSeconds | <code>Number</code> | 
 | fn | <code>function</code> | 
+
+<a name="getOS_FromAgent"></a>
+
+## getOS\_FromAgent(agent, maxTouchPoints) ⇒ <code>availableOS\_Type</code>
+<p>通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+在服务器端传入 req.headers['user-agent']</p>
+<h2>在浏览器传入 navigator.userAgent</h2><p>但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
+原因是新版本的 iPadOS(&gt;= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断</p>
+<p>在浏览器端，可直接调用 dom util 中的 getOS_Type</p>
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| agent | <code>string</code> | <p>user agent</p> |
+| maxTouchPoints | <code>number</code> | <p>navigator.maxTouchPoints</p> |
 

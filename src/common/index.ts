@@ -1,5 +1,4 @@
-import moment from "moment";
-import { EMOJI_REGEX } from "../constants/RegEx";
+import * as RegEx from "../constants/RegEx";
 
 /**
  * removeSpace
@@ -14,7 +13,7 @@ export const removeSpace = (str: string): string => str.replace(/\s/g, "");
  * @returns {Boolean}
  */
 export const hasEmojiInString = (str: string): boolean => {
-  return EMOJI_REGEX.test(str);
+  return RegEx.EMOJI_REGEX.test(str);
 };
 
 /**
@@ -23,21 +22,25 @@ export const hasEmojiInString = (str: string): boolean => {
  * @returns {String}
  */
 export const removeEmojis = (string: string): string => {
-  return string.replace(EMOJI_REGEX, "");
+  return string.replace(RegEx.EMOJI_REGEX, "");
 };
 
 /**
- * tinyMoment
- */
-export const tinyMoment = moment;
-
-/**
- * isNull
+ * isVoidNull
  * @param {any} param
  * @returns {Boolean}
  */
-export const isNull = function (param: any): boolean {
-  return param === void 0 || param === null || param === undefined;
+export const isVoidNull = function (param: any): boolean {
+  return typeof param === "undefined" || param === null || param === undefined;
+};
+
+/**
+ * isVoidNullEmptyString
+ * @param {any} param
+ * @returns {Boolean}
+ */
+export const isVoidNullEmptyString = function (param: any) {
+  return isVoidNull(param) || param === "";
 };
 
 /**
@@ -49,23 +52,6 @@ export const isNullArray = function (arr: string | any[]) {
   if (!Array.isArray(arr)) return true;
   if (arr.length === 0) return true;
   return false;
-};
-
-/**
- * isNullString
- * @param {String} str
- * @returns {Boolean}
- */
-export const isNullString = function (str: string) {
-  if (!str) {
-    return true;
-  }
-  if (str === "") {
-    return true;
-  }
-  var regu = "^[ ]+$";
-  var re = new RegExp(regu);
-  return re.test(str);
 };
 
 /**
@@ -113,48 +99,6 @@ export const calculateDifference = function (
     })
     .filter((x) => x);
   return { obj, formattedTime: time };
-};
-
-/**
- * timeShowFormat
- * @param {Number} timestamp
- * @returns {String}
- */
-export const timeShowFormat = (timestamp: number) => {
-  let timestampInt = Number(timestamp);
-
-  let startMinuteTimestamp = moment().startOf("minute").valueOf();
-  let startDayTimestamp = moment().startOf("day").valueOf();
-  let startYearTimestamp = moment().startOf("year").valueOf();
-
-  let formatTimestamp = new FormatTimestamp(timestampInt);
-  let timeObj = formatTimestamp.obj();
-  let formatStr = "";
-
-  if (timestampInt < startYearTimestamp) {
-    // not current year
-    formatStr = `${timeObj.year}-${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`;
-  }
-
-  if (timestampInt >= startYearTimestamp && timestampInt < startDayTimestamp) {
-    // is current year and not current day
-    formatStr = `${timeObj.month}-${timeObj.day} ${timeObj.hour}:${timeObj.minute}`;
-  }
-
-  if (
-    timestampInt >= startDayTimestamp &&
-    timestampInt < startMinuteTimestamp
-  ) {
-    // is current day and not current minute
-    formatStr = `${timeObj.hour}:${timeObj.minute}`;
-  }
-
-  if (timestampInt >= startMinuteTimestamp) {
-    // current minute
-    formatStr = `1分钟前`;
-  }
-
-  return formatStr;
 };
 
 /**
@@ -441,12 +385,8 @@ export const once = function (fn: Function) {
   };
 };
 
-export const copyArray = function <T>(arr: Array<T>): Array<T> {
-  return arr.concat();
-};
-
 export const hp = function (obj: Object, key: string) {
-  return obj.hasOwnProperty(key);
+  return Object.prototype.hasOwnProperty.call(obj, key);
 };
 
 /**
@@ -633,32 +573,38 @@ export const randomString = function (length: number) {
  * URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
  * email | phone | tel | number | lower | upper | ip
  */
-export const checkStringType = function (str: string, type: string) {
+export const checkStringType = function (
+  str: string,
+  type:
+    | "URL_START_WITH_HTTP_OR_HTTPS"
+    | "URL_NOT_REQUIRE_HTTP_OR_HTTPS"
+    | "email"
+    | "phone"
+    | "tel"
+    | "number"
+    | "lower"
+    | "upper"
+    | "ip"
+) {
   switch (type) {
     case "URL_START_WITH_HTTP_OR_HTTPS":
-      var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
-      var regex = new RegExp(expression);
-      return !!str.match(regex);
+      return !!str.match(new RegExp(RegEx.URL_START_WITH_HTTP_OR_HTTPS));
     case "URL_NOT_REQUIRE_HTTP_OR_HTTPS":
-      var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-      var regex = new RegExp(expression);
-      return !!str.match(regex);
+      return !!str.match(new RegExp(RegEx.URL_NOT_REQUIRE_HTTP_OR_HTTPS));
     case "email":
-      return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(str);
+      return RegEx.EMAIL.test(str);
     case "phone":
-      return /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(str);
+      return RegEx.PHONE.test(str);
     case "tel":
-      return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
+      return RegEx.TEL.test(str);
     case "number":
-      return /^[0-9]$/.test(str);
+      return RegEx.NUMBER.test(str);
     case "lower":
-      return /^[a-z]+$/.test(str);
+      return RegEx.LOWER.test(str);
     case "upper":
-      return /^[A-Z]+$/.test(str);
+      return RegEx.UPPER.test(str);
     case "ip":
-      return /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/.test(
-        str
-      );
+      return RegEx.IP.test(str);
     default:
       return false;
   }
@@ -676,23 +622,46 @@ export const randomNum = function (Min: number, Max: number) {
   return Min + Math.round(Rand * Range);
 };
 
+export type availableOS_Type =
+  | "windows"
+  | "iphone"
+  | "ipad"
+  | "android"
+  | "linux pc"
+  | "mac"
+  | "other";
+
 /**
- * 数组排序.
- * @param {Array} - source array
- * @returns {Array} - new array
+ * 通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+ * 在服务器端传入 req.headers['user-agent']
+ * 在浏览器传入 navigator.userAgent
+ * ---------
+ * 但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
+ * 原因是新版本的 iPadOS(>= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断
+ *
+ * 在浏览器端，可直接调用 dom util 中的 getOS_Type
+ * @param { string } - user agent
+ * @param { number? } - navigator.maxTouchPoints
+ * @returns { availableOS_Type } 
  */
-export const quickSort = function (arr: []) {
-  if (arr.length <= 1) return arr;
-  let middle_number = Math.floor(arr.length / 2);
-  let pivot = arr.splice(middle_number, 1)[0];
-  let leftList: [] = [];
-  let rightList: [] = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < pivot) {
-      leftList.push(arr[i]);
-    } else {
-      rightList.push(arr[i]);
-    }
+export function getOS_FromAgent(
+  agent: string,
+  maxTouchPoints?: number
+): availableOS_Type {
+  agent = agent.toLowerCase();
+  if (/windows/.test(agent)) {
+    return "windows";
+  } else if (/iphone|ipod/.test(agent) && /mobile/.test(agent)) {
+    return "iphone";
+  } else if (agent.includes("mac") && maxTouchPoints && maxTouchPoints > 2) {
+    return "ipad";
+  } else if (/android/.test(agent)) {
+    return "android";
+  } else if (/linux/.test(agent)) {
+    return "linux pc";
+  } else if (/mac/.test(agent)) {
+    return "mac";
+  } else {
+    return "other";
   }
-  return quickSort(leftList).concat([pivot], quickSort(rightList));
-};
+}

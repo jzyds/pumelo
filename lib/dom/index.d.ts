@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+import { availableOS_Type } from "../common";
 /**
  * load file info from local
  * @param {File} file
@@ -10,9 +12,7 @@ export declare const loadVideo: (file: File) => Promise<HTMLVideoElement>;
  * @returns {Object}
  */
 export declare const getVideoInfoAsync: (file: File) => Promise<{
-    duration: number;
-} | {
-    duration?: undefined;
+    duration?: HTMLVideoElement["duration"];
 }>;
 /**
  * get image size in browser
@@ -20,37 +20,40 @@ export declare const getVideoInfoAsync: (file: File) => Promise<{
  * @param {function(width,height)} callback
  * @returns {void}
  */
-export declare const getImageSizeCallback: (src: string, callback: Function) => void;
+export declare const getImageSizeCallback: (src: string, callback: (width: number, height: number) => void) => void;
 /**
  * get image size in browser
  * @param {String} src
  * @returns {void}
  */
-export declare const getImageSizePromise: (src: string) => Promise<unknown>;
+export declare const getImageSizePromise: (src: string) => Promise<{
+    width: number;
+    height: number;
+}>;
 /**
  * set browser cookie
  * @param {String} name
  * @param {String} value
  * @returns {void}
  */
-export declare const setCookie: (name: string, value: string) => void;
+export declare const setCookie: (name: string, value: string, attributes?: Cookies.CookieAttributes) => void;
 /**
  * get browser cookie
  * @param {String} name
- * @returns {void}
+ * @returns {string | undefined}
  */
-export declare const getCookie: (name: string) => string | null;
+export declare const getCookie: (name: string) => string | undefined;
 /**
  * delete browser cookie
  * @param {String} name
  * @returns {void}
  */
-export declare const deleteCookie: (name: string) => void;
+export declare const deleteCookie: (name: string, attributes?: Cookies.CookieAttributes) => void;
 /**
  * Check if the browser supports the webp format
  * @returns {boolean}
  */
-export declare const checkWebp: () => boolean;
+export declare const checkWebpSupport: () => boolean;
 /**
  * Set the page root element font size,
  * usually used in conjunction with rem
@@ -61,7 +64,7 @@ export declare const setBaseFontSizeByClientWidth: () => void;
  * Get current url param
  * @returns {object}
  */
-export declare const getUrlParam: () => any;
+export declare const getUrlParam: () => object;
 /**
  * 动态加载JS
  * @param {String} url
@@ -94,19 +97,22 @@ export declare const historyBackRefresh: () => void;
  */
 export declare const historyGo: (num: number) => void;
 /**
- * 判断浏览器环境;
+ * @param { string } navigator.userAgent
+ * @param { number? } navigator.maxTouchPoints
+ * @returns { availableOS_Type }
  */
-export declare const browserObj: {
-    isMobile: () => boolean;
-    isAndroid: () => boolean;
-    isMobileQQ: () => boolean;
-    isIOS: () => boolean;
-    isWx: () => boolean;
-    isChrome: () => boolean;
-    isBaidu: () => boolean;
-    isUC: () => boolean;
-    isSafari: () => boolean;
-    isQQBrowser: () => boolean;
-    isWeibo: () => boolean;
-    isAlipay: () => boolean;
-};
+export declare const getOS_Type: () => availableOS_Type;
+declare type availableBrowserType = "MobileQQ" | "Wx" | "Chrome" | "Baidu" | "UC" | "Safari" | "QQBrowser" | "Weibo" | "Alipay" | "other";
+/**
+ * 判断浏览器环境
+ * @returns { availableBrowserType }
+ */
+export declare const getBrowserType: () => availableBrowserType;
+/**
+ * 设置输入框的输入字符限制
+ * @param { HTMLInputElement } inputDom
+ * @param { string[] } invalidChars
+ * @param { boolean } isInvalidPaste
+ */
+export declare const setInputInvalidChars: (inputDom: HTMLInputElement, invalidChars: string[], isInvalidPaste?: boolean) => void;
+export {};

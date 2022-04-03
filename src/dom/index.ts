@@ -1,9 +1,12 @@
+import Cookies from "js-cookie";
+import { availableOS_Type, getOS_FromAgent } from "../common";
+
 /**
  * load file info from local
  * @param {File} file
  * @returns {Promise}
  */
-export const loadVideo = (file: File) =>
+export const loadVideo = (file: File): Promise<HTMLVideoElement> =>
   new Promise((resolve: (value: HTMLVideoElement) => void, reject) => {
     try {
       let video: HTMLVideoElement;
@@ -26,9 +29,11 @@ export const loadVideo = (file: File) =>
  * @param {File} file
  * @returns {Object}
  */
-export const getVideoInfoAsync = async (file: File) => {
+export const getVideoInfoAsync = async (
+  file: File
+): Promise<{ duration?: HTMLVideoElement["duration"] }> => {
   try {
-    let video: HTMLVideoElement = await loadVideo(file);
+    let video = await loadVideo(file);
     return {
       duration: video.duration,
     };
@@ -43,7 +48,10 @@ export const getVideoInfoAsync = async (file: File) => {
  * @param {function(width,height)} callback
  * @returns {void}
  */
-export const getImageSizeCallback = function (src: string, callback: Function) {
+export const getImageSizeCallback = function (
+  src: string,
+  callback: (width: number, height: number) => void
+): void {
   var img = new Image();
   img.onload = function () {
     callback(img.width, img.height);
@@ -56,7 +64,9 @@ export const getImageSizeCallback = function (src: string, callback: Function) {
  * @param {String} src
  * @returns {void}
  */
-export const getImageSizePromise = (src: string) => {
+export const getImageSizePromise = (
+  src: string
+): Promise<{ width: number; height: number }> => {
   return new Promise((resolve) => {
     var img = new Image();
     img.onload = function () {
@@ -69,29 +79,32 @@ export const getImageSizePromise = (src: string) => {
   });
 };
 
+const cookie_default_attributes: Cookies.CookieAttributes = {
+  expires: 7,
+  path: "/",
+};
+
 /**
  * set browser cookie
  * @param {String} name
  * @param {String} value
  * @returns {void}
  */
-export const setCookie = function (name: string, value: string) {
-  var Days = 30;
-  var exp = new Date();
-  exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-  document.cookie =
-    name + "=" + escape(value) + ";expires=" + exp.toUTCString();
+export const setCookie = function (
+  name: string,
+  value: string,
+  attributes: Cookies.CookieAttributes = cookie_default_attributes
+): void {
+  Cookies.set(name, value, attributes);
 };
 
 /**
  * get browser cookie
  * @param {String} name
- * @returns {void}
+ * @returns {string | undefined}
  */
-export const getCookie = function (name: string) {
-  var arr,
-    reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-  return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+export const getCookie = function (name: string): string | undefined {
+  return Cookies.get(name);
 };
 
 /**
@@ -99,20 +112,18 @@ export const getCookie = function (name: string) {
  * @param {String} name
  * @returns {void}
  */
-export const deleteCookie = function (name: string) {
-  var exp = new Date();
-  exp.setTime(exp.getTime() - 1);
-  var cval = getCookie(name);
-  if (cval != null) {
-    document.cookie = name + "=" + cval + ";expires=" + exp.toUTCString();
-  }
+export const deleteCookie = function (
+  name: string,
+  attributes: Cookies.CookieAttributes = cookie_default_attributes
+): void {
+  Cookies.remove(name, attributes);
 };
 
 /**
  * Check if the browser supports the webp format
  * @returns {boolean}
  */
-export const checkWebp = function (): boolean {
+export const checkWebpSupport = function (): boolean {
   try {
     return (
       document
@@ -130,7 +141,7 @@ export const checkWebp = function (): boolean {
  * usually used in conjunction with rem
  * @returns {void}
  */
-export const setBaseFontSizeByClientWidth = () => {
+export const setBaseFontSizeByClientWidth = (): void => {
   const baseSize = 16;
   const scale = document.documentElement.clientWidth / 375;
   document.documentElement.style.fontSize =
@@ -141,7 +152,7 @@ export const setBaseFontSizeByClientWidth = () => {
  * Get current url param
  * @returns {object}
  */
-export const getUrlParam = () => {
+export const getUrlParam = (): object => {
   let qs = document.location.search;
   qs = qs.split("+").join(" ");
 
@@ -226,51 +237,86 @@ export const historyGo = function (num: number) {
 };
 
 /**
- * 判断浏览器环境;
+ * @param { string } navigator.userAgent
+ * @param { number? } navigator.maxTouchPoints
+ * @returns { availableOS_Type }
  */
-export const browserObj = {
-  isMobile: function () {
-    return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
-  },
-  isAndroid: function () {
-    return /Android/i.test(navigator.userAgent);
-  },
-  isMobileQQ: function () {
-    var ua = navigator.userAgent;
-    return (
-      /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(ua) ||
-      /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(ua)
-    );
-  },
-  isIOS: function () {
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  },
-  isWx: function () {
-    var ua = navigator.userAgent.toLowerCase();
-    return ua.indexOf("micromessenger") != -1;
-  },
-  isChrome: function () {
-    return (
-      /Chrome\/([\d.]+)/.test(navigator.userAgent) ||
-      /CriOS\/([\d.]+)/.test(navigator.userAgent)
-    );
-  },
-  isBaidu: function () {
-    return /baidubrowser/i.test(navigator.userAgent);
-  },
-  isUC: function () {
-    return /UCBrowser/i.test(navigator.userAgent);
-  },
-  isSafari: function () {
-    return /safari/i.test(navigator.userAgent);
-  },
-  isQQBrowser: function () {
-    return /MQQBrowser/i.test(navigator.userAgent);
-  },
-  isWeibo: function () {
-    return /weibo/i.test(navigator.userAgent);
-  },
-  isAlipay: function () {
-    return /Alipay/i.test(navigator.userAgent);
-  },
+export const getOS_Type = (): availableOS_Type => {
+  return getOS_FromAgent(navigator.userAgent, navigator.maxTouchPoints);
+};
+
+type availableBrowserType =
+  | "MobileQQ"
+  | "Wx"
+  | "Chrome"
+  | "Baidu"
+  | "UC"
+  | "Safari"
+  | "QQBrowser"
+  | "Weibo"
+  | "Alipay"
+  | "other";
+
+/**
+ * 判断浏览器环境
+ * @returns { availableBrowserType }
+ */
+export const getBrowserType = (): availableBrowserType => {
+  const UA = navigator.userAgent;
+  if (
+    /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(UA) ||
+    /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(UA)
+  ) {
+    return "MobileQQ";
+  }
+  if (UA.toLowerCase().indexOf("micromessenger") !== -1) {
+    return "Wx";
+  }
+  if (/Chrome\/([\d.]+)/.test(UA) || /CriOS\/([\d.]+)/.test(UA)) {
+    return "Chrome";
+  }
+  if (/baidubrowser/i.test(UA)) {
+    return "Baidu";
+  }
+  if (/UCBrowser/i.test(UA)) {
+    return "UC";
+  }
+  if (/safari/i.test(UA)) {
+    return "Safari";
+  }
+  if (/MQQBrowser/i.test(UA)) {
+    return "QQBrowser";
+  }
+  if (/weibo/i.test(UA)) {
+    return "Weibo";
+  }
+  if (/Alipay/i.test(UA)) {
+    return "Alipay";
+  }
+  return "other";
+};
+
+/**
+ * 设置输入框的输入字符限制
+ * @param { HTMLInputElement } inputDom
+ * @param { string[] } invalidChars
+ * @param { boolean } isInvalidPaste
+ */
+export const setInputInvalidChars = (
+  inputDom: HTMLInputElement,
+  invalidChars: string[],
+  isInvalidPaste: boolean = true
+) => {
+  isInvalidPaste &&
+    inputDom.addEventListener("input", function () {
+      invalidChars.forEach((char) => {
+        this.value = this.value.replace(char, "");
+      });
+    });
+
+  inputDom.addEventListener("keydown", function (e) {
+    if (invalidChars.includes(e.key)) {
+      e.preventDefault();
+    }
+  });
 };

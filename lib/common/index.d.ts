@@ -1,4 +1,3 @@
-import moment from "moment";
 /**
  * removeSpace
  * @param {String} str
@@ -18,27 +17,23 @@ export declare const hasEmojiInString: (str: string) => boolean;
  */
 export declare const removeEmojis: (string: string) => string;
 /**
- * tinyMoment
- */
-export declare const tinyMoment: typeof moment;
-/**
- * isNull
+ * isVoidNull
  * @param {any} param
  * @returns {Boolean}
  */
-export declare const isNull: (param: any) => boolean;
+export declare const isVoidNull: (param: any) => boolean;
+/**
+ * isVoidNullEmptyString
+ * @param {any} param
+ * @returns {Boolean}
+ */
+export declare const isVoidNullEmptyString: (param: any) => boolean;
 /**
  * isNullArray
  * @param {any} arr
  * @returns {Boolean}
  */
 export declare const isNullArray: (arr: string | any[]) => boolean;
-/**
- * isNullString
- * @param {String} str
- * @returns {Boolean}
- */
-export declare const isNullString: (str: string) => boolean;
 /**
  * calculateDifference
  * @param {Number} difference
@@ -48,12 +43,6 @@ export declare const calculateDifference: (difference: number, language: string)
     obj: any;
     formattedTime: string[];
 };
-/**
- * timeShowFormat
- * @param {Number} timestamp
- * @returns {String}
- */
-export declare const timeShowFormat: (timestamp: number) => string;
 /**
  * Update or create query string
  * @param {String} uri
@@ -164,7 +153,6 @@ export declare const some: (arr: Array<any>, fn: Function) => boolean;
  * @returns {Function}
  */
 export declare const once: (fn: Function) => () => any;
-export declare const copyArray: <T>(arr: T[]) => T[];
 export declare const hp: (obj: Object, key: string) => boolean;
 /**
  * isNumber
@@ -227,7 +215,7 @@ export declare const randomString: (length: number) => string;
  * URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
  * email | phone | tel | number | lower | upper | ip
  */
-export declare const checkStringType: (str: string, type: string) => boolean;
+export declare const checkStringType: (str: string, type: "URL_START_WITH_HTTP_OR_HTTPS" | "URL_NOT_REQUIRE_HTTP_OR_HTTPS" | "email" | "phone" | "tel" | "number" | "lower" | "upper" | "ip") => boolean;
 /**
  * 生成随机数.
  * @param {Number} - 最小值
@@ -235,9 +223,18 @@ export declare const checkStringType: (str: string, type: string) => boolean;
  * @returns {Number}
  */
 export declare const randomNum: (Min: number, Max: number) => number;
+export declare type availableOS_Type = "windows" | "iphone" | "ipad" | "android" | "linux pc" | "mac" | "other";
 /**
- * 数组排序.
- * @param {Array} - source array
- * @returns {Array} - new array
+ * 通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+ * 在服务器端传入 req.headers['user-agent']
+ * 在浏览器传入 navigator.userAgent
+ * ---------
+ * 但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
+ * 原因是新版本的 iPadOS(>= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断
+ *
+ * 在浏览器端，可直接调用 dom util 中的 getOS_Type
+ * @param { string } - user agent
+ * @param { number? } - navigator.maxTouchPoints
+ * @returns { availableOS_Type }
  */
-export declare const quickSort: (arr: []) => any;
+export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number): availableOS_Type;
