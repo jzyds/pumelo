@@ -150,9 +150,9 @@ export const setBaseFontSizeByClientWidth = (): void => {
 
 /**
  * Get current url param
- * @returns {object}
+ * @returns {{ [key: string]: string | string[] | void }}
  */
-export const getUrlParam = (): object => {
+export const getUrlParam = (): { [key: string]: string | string[] | void } => {
   let qs = document.location.search;
   qs = qs.split("+").join(" ");
 

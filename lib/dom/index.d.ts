@@ -62,9 +62,11 @@ export declare const checkWebpSupport: () => boolean;
 export declare const setBaseFontSizeByClientWidth: () => void;
 /**
  * Get current url param
- * @returns {object}
+ * @returns {{ [key: string]: string | string[] | void }}
  */
-export declare const getUrlParam: () => object;
+export declare const getUrlParam: () => {
+    [key: string]: string | void | string[];
+};
 /**
  * 动态加载JS
  * @param {String} url
