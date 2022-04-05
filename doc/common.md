@@ -161,11 +161,7 @@
 **Kind**: global variable  
 **Example**  
 ```js
-flat()([
- [1],
- [[2],[3]],
- [[4,[5]]]
-])
+flat()([ [1], [[2],[3]], [[4,[5]]]])
 ```
 <a name="timeDown"></a>
 
@@ -371,8 +367,7 @@ flat()([
 
 **Example**  
 ```js
-URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
-email | phone | tel | number | lower | upper | ip
+URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | tel | number | lower | upper | ip
 ```
 <a name="checkStringType"></a>
 
