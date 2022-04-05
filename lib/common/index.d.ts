@@ -238,3 +238,10 @@ export declare type availableOS_Type = "windows" | "iphone" | "ipad" | "android"
  * @returns { availableOS_Type }
  */
 export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number): availableOS_Type;
+/**
+ * @param {any} - key
+ * @param {T} - obj
+ * @returns {Boolean}
+ * @example
+ */
+export declare function isObjKey<T>(key: any, obj: T): key is keyof T;

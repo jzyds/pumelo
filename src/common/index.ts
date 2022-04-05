@@ -665,3 +665,14 @@ export function getOS_FromAgent(
     return "other";
   }
 }
+
+
+/**
+ * @param {any} - key
+ * @param {T} - obj
+ * @returns {Boolean}
+ * @example
+ */
+export function isObjKey<T>(key: any, obj: T): key is keyof T {
+  return key in obj;
+}
