@@ -148,11 +148,13 @@ export const setBaseFontSizeByClientWidth = (): void => {
     baseSize * Math.min(scale, 2) + "px";
 };
 
+type getUrlParamResponse = { [key: string]: string | string[] | void };
+
 /**
  * Get current url param
- * @returns {{ [key: string]: string | string[] | void }}
+ * @returns {getUrlParamResponse}
  */
-export const getUrlParam = (): { [key: string]: string | string[] | void } => {
+export const getUrlParam = (): getUrlParamResponse => {
   let qs = document.location.search;
   qs = qs.split("+").join(" ");
 
@@ -237,8 +239,7 @@ export const historyGo = function (num: number) {
 };
 
 /**
- * @param { string } navigator.userAgent
- * @param { number? } navigator.maxTouchPoints
+ * 获取当前系统类型
  * @returns { availableOS_Type }
  */
 export const getOS_Type = (): availableOS_Type => {

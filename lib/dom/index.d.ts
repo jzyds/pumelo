@@ -60,13 +60,14 @@ export declare const checkWebpSupport: () => boolean;
  * @returns {void}
  */
 export declare const setBaseFontSizeByClientWidth: () => void;
+declare type getUrlParamResponse = {
+    [key: string]: string | string[] | void;
+};
 /**
  * Get current url param
- * @returns {{ [key: string]: string | string[] | void }}
+ * @returns {getUrlParamResponse}
  */
-export declare const getUrlParam: () => {
-    [key: string]: string | void | string[];
-};
+export declare const getUrlParam: () => getUrlParamResponse;
 /**
  * 动态加载JS
  * @param {String} url
@@ -99,8 +100,7 @@ export declare const historyBackRefresh: () => void;
  */
 export declare const historyGo: (num: number) => void;
 /**
- * @param { string } navigator.userAgent
- * @param { number? } navigator.maxTouchPoints
+ * 获取当前系统类型
  * @returns { availableOS_Type }
  */
 export declare const getOS_Type: () => availableOS_Type;

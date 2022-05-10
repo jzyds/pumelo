@@ -233,8 +233,8 @@ export declare type availableOS_Type = "windows" | "iphone" | "ipad" | "android"
  * 原因是新版本的 iPadOS(>= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断
  *
  * 在浏览器端，可直接调用 dom util 中的 getOS_Type
- * @param { string } - user agent
- * @param { number? } - navigator.maxTouchPoints
+ * @param { string } agent - user agent
+ * @param { number? } maxTouchPoints - navigator.maxTouchPoints
  * @returns { availableOS_Type }
  */
 export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number): availableOS_Type;
@@ -242,6 +242,5 @@ export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number):
  * @param {any} - key
  * @param {T} - obj
  * @returns {Boolean}
- * @example
  */
 export declare function isObjKey<T>(key: any, obj: T): key is keyof T;

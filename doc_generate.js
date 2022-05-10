@@ -1,13 +1,10 @@
 const jsdoc2md = require("jsdoc-to-markdown");
 const fse = require("fs-extra");
 
-/**
- * document TypeScript
- * https://github.com/jsdoc2md/jsdoc-to-markdown/wiki/How-to-document-TypeScript
- */
-
 jsdoc2md
-  .render({ files: "src/common/*.ts", configure: "./jsdoc2md.json" })
+  .render({
+    files: "lib/common/*.js",
+  })
   .then((o) => {
     fse
       .outputFile("./doc/common.md", o)
@@ -20,7 +17,9 @@ jsdoc2md
   });
 
 jsdoc2md
-  .render({ files: "src/dom/*.ts", configure: "./jsdoc2md.json" })
+  .render({
+    files: "lib/dom/*.js",
+  })
   .then((o) => {
     fse
       .outputFile("./doc/dom.md", o)
@@ -33,7 +32,9 @@ jsdoc2md
   });
 
 jsdoc2md
-  .render({ files: "src/node/*.ts", configure: "./jsdoc2md.json" })
+  .render({
+    files: "lib/node/*.js",
+  })
   .then((o) => {
     fse
       .outputFile("./doc/node.md", o)
