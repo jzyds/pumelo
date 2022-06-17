@@ -41,7 +41,7 @@ export declare const isNullArray: (arr: string | any[]) => boolean;
  */
 export declare const calculateDifference: (difference: number, language: string) => {
     obj: any;
-    formattedTime: string[];
+    formattedTime: any[];
 };
 /**
  * Update or create query string
