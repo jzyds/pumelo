@@ -59,7 +59,7 @@ export const isNullArray = function (arr: string | any[]) {
  * @param {Number} difference
  * @returns {Object}
  */
-export const calculateDifference = function (
+ export const calculateDifference = function (
   difference: number,
   language: string
 ) {
@@ -88,8 +88,21 @@ export const calculateDifference = function (
       const maybePlural = units === 1 ? "" : "s";
       obj[unitName] = units;
       if (units > 0) {
-        if (!!language && language === "cn") {
-          return units + " " + hashEnCn[unitName];
+        if (!!language ) {
+          if(language === "cn") {
+            return units + " " + hashEnCn[unitName];
+          }
+
+          if(language === 'en') {
+            return units + {
+              second: "s",
+              minute: "m",
+              hour: "h",
+              day: "D",
+              month: "M",
+              year: "Y",
+            }[unitName];
+          }
         } else {
           return units + " " + unitName + maybePlural;
         }
