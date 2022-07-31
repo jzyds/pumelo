@@ -62,6 +62,9 @@ usually used in conjunction with rem</p>
 <dt><a href="#setInputInvalidChars">setInputInvalidChars(inputDom, invalidChars, isInvalidPaste)</a></dt>
 <dd><p>设置输入框的输入字符限制</p>
 </dd>
+<dt><a href="#loader">loader(param)</a> ⇒ <code>loaderReturn</code></dt>
+<dd><p>loader</p>
+</dd>
 </dl>
 
 <a name="loadVideo"></a>
@@ -227,4 +230,15 @@ Get current url param
 | inputDom | <code>HTMLInputElement</code> | 
 | invalidChars | <code>Array.&lt;string&gt;</code> | 
 | isInvalidPaste | <code>boolean</code> | 
+
+<a name="loader"></a>
+
+## loader(param) ⇒ <code>loaderReturn</code>
+loader
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| param | <code>loaderParam</code> | 
 

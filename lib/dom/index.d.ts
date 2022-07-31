@@ -117,4 +117,20 @@ export declare const getBrowserType: () => availableBrowserType;
  * @param { boolean } isInvalidPaste
  */
 export declare const setInputInvalidChars: (inputDom: HTMLInputElement, invalidChars: string[], isInvalidPaste?: boolean) => void;
+declare type loaderParam = {
+    zIndex?: string;
+    showModal?: boolean;
+    iconHtml?: string;
+    text?: string;
+    color?: string;
+};
+declare type loaderReturn = {
+    close: Function;
+};
+/**
+ * loader
+ * @param { loaderParam } param
+ * @returns { loaderReturn }
+ */
+export declare function loader({ zIndex, showModal, iconHtml, text, color, }?: loaderParam): loaderReturn;
 export {};
