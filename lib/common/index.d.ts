@@ -244,3 +244,8 @@ export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number):
  * @returns {Boolean}
  */
 export declare function isObjKey<T>(key: any, obj: T): key is keyof T;
+/**
+ * Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
+ * @returns {String}
+ */
+export declare function uuidv4(): string;

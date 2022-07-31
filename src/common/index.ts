@@ -59,7 +59,7 @@ export const isNullArray = function (arr: string | any[]) {
  * @param {Number} difference
  * @returns {Object}
  */
- export const calculateDifference = function (
+export const calculateDifference = function (
   difference: number,
   language: string
 ) {
@@ -88,20 +88,23 @@ export const isNullArray = function (arr: string | any[]) {
       const maybePlural = units === 1 ? "" : "s";
       obj[unitName] = units;
       if (units > 0) {
-        if (!!language ) {
-          if(language === "cn") {
+        if (!!language) {
+          if (language === "cn") {
             return units + " " + hashEnCn[unitName];
           }
 
-          if(language === 'en') {
-            return units + {
-              second: "s",
-              minute: "m",
-              hour: "h",
-              day: "D",
-              month: "M",
-              year: "Y",
-            }[unitName];
+          if (language === "en") {
+            return (
+              units +
+              {
+                second: "s",
+                minute: "m",
+                hour: "h",
+                day: "D",
+                month: "M",
+                year: "Y",
+              }[unitName]
+            );
           }
         } else {
           return units + " " + unitName + maybePlural;
@@ -655,7 +658,7 @@ export type availableOS_Type =
  * 在浏览器端，可直接调用 dom util 中的 getOS_Type
  * @param { string } agent - user agent
  * @param { number? } maxTouchPoints - navigator.maxTouchPoints
- * @returns { availableOS_Type } 
+ * @returns { availableOS_Type }
  */
 export function getOS_FromAgent(
   agent: string,
@@ -679,7 +682,6 @@ export function getOS_FromAgent(
   }
 }
 
-
 /**
  * @param {any} - key
  * @param {T} - obj
@@ -687,4 +689,23 @@ export function getOS_FromAgent(
  */
 export function isObjKey<T>(key: any, obj: T): key is keyof T {
   return key in obj;
+}
+
+/**
+ * Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
+ * @returns {String}
+ */
+export function uuidv4(): string {
+  var u = "",
+    m = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",
+    i = 0,
+    rb = (Math.random() * 0xffffffff) | 0;
+  while (i++ < 36) {
+    var c = m[i - 1],
+      r = rb & 0xf,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    u += c == "-" || c == "4" ? c : v.toString(16);
+    rb = i % 8 == 0 ? (Math.random() * 0xffffffff) | 0 : rb >> 4;
+  }
+  return u;
 }

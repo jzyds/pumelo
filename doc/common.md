@@ -106,6 +106,9 @@
 </dd>
 <dt><a href="#isObjKey">isObjKey(key, obj)</a> ⇒ <code>Boolean</code></dt>
 <dd></dd>
+<dt><a href="#uuidv4">uuidv4()</a> ⇒ <code>String</code></dt>
+<dd><p>Universally Unique IDentifier (RFC 4122 <a href="https://www.ietf.org/rfc/rfc4122.txt">https://www.ietf.org/rfc/rfc4122.txt</a>)</p>
+</dd>
 </dl>
 
 <a name="FormatTimestamp"></a>
@@ -470,3 +473,9 @@ URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | t
 | key | <code>any</code> | key |
 | obj | <code>T</code> | obj |
 
+<a name="uuidv4"></a>
+
+## uuidv4() ⇒ <code>String</code>
+Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
+
+**Kind**: global function  
