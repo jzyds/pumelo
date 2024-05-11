@@ -687,7 +687,7 @@ export function getOS_FromAgent(
  * @param {T} - obj
  * @returns {Boolean}
  */
-export function isObjKey<T>(key: any, obj: T): key is keyof T {
+export function isObjKey<T extends object>(key: any, obj: T): key is keyof T {
   return key in obj;
 }
 
@@ -708,4 +708,30 @@ export function uuidv4(): string {
     rb = i % 8 == 0 ? (Math.random() * 0xffffffff) | 0 : rb >> 4;
   }
   return u;
+}
+
+/**
+ * Extract images from Markdown or HTML
+ * @returns {{ src: string; alt: string }[]}
+ */
+export function extractImages(content: string): { src: string; alt: string }[] {
+  const regex =
+    /!\[(?<altText>.*)\]\s*\((?<imageURL>.+)\)|img\s*src="(?<imageURL1>[^"]*)"\s*alt="(?<altText1>[^"]*)" \/>|img\s*alt="(?<altText2>[^"]*)"\s*src="(?<imageURL2>[^"]*)" \/>/gm;
+
+  let list: RegExpExecArray | null;
+  const images: { src: string; alt: string }[] = [];
+  while ((list = regex.exec(content)) !== null) {
+    if (list.index === regex.lastIndex) regex.lastIndex++;
+    if (list.groups) {
+      images.push({
+        alt:
+          list.groups.altText ?? list.groups.altText1 ?? list.groups.altText2,
+        src:
+          list.groups.imageURL ??
+          list.groups.imageURL1 ??
+          list.groups.imageURL2,
+      });
+    }
+  }
+  return images;
 }

@@ -223,7 +223,7 @@ export declare const checkStringType: (str: string, type: "URL_START_WITH_HTTP_O
  * @returns {Number}
  */
 export declare const randomNum: (Min: number, Max: number) => number;
-export declare type availableOS_Type = "windows" | "iphone" | "ipad" | "android" | "linux pc" | "mac" | "other";
+export type availableOS_Type = "windows" | "iphone" | "ipad" | "android" | "linux pc" | "mac" | "other";
 /**
  * 通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
  * 在服务器端传入 req.headers['user-agent']
@@ -243,9 +243,17 @@ export declare function getOS_FromAgent(agent: string, maxTouchPoints?: number):
  * @param {T} - obj
  * @returns {Boolean}
  */
-export declare function isObjKey<T>(key: any, obj: T): key is keyof T;
+export declare function isObjKey<T extends object>(key: any, obj: T): key is keyof T;
 /**
  * Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
  * @returns {String}
  */
 export declare function uuidv4(): string;
+/**
+ * Extract images from Markdown or HTML
+ * @returns {{ src: string; alt: string }[]}
+ */
+export declare function extractImages(content: string): {
+    src: string;
+    alt: string;
+}[];

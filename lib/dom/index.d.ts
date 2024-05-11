@@ -60,7 +60,7 @@ export declare const checkWebpSupport: () => boolean;
  * @returns {void}
  */
 export declare const setBaseFontSizeByClientWidth: () => void;
-declare type getUrlParamResponse = {
+type getUrlParamResponse = {
     [key: string]: string | string[] | void;
 };
 /**
@@ -104,7 +104,7 @@ export declare const historyGo: (num: number) => void;
  * @returns { availableOS_Type }
  */
 export declare const getOS_Type: () => availableOS_Type;
-declare type availableBrowserType = "MobileQQ" | "Wx" | "Chrome" | "Baidu" | "UC" | "Safari" | "QQBrowser" | "Weibo" | "Alipay" | "other";
+type availableBrowserType = "MobileQQ" | "Wx" | "Chrome" | "Baidu" | "UC" | "Safari" | "QQBrowser" | "Weibo" | "Alipay" | "other";
 /**
  * 判断浏览器环境
  * @returns { availableBrowserType }
@@ -117,14 +117,14 @@ export declare const getBrowserType: () => availableBrowserType;
  * @param { boolean } isInvalidPaste
  */
 export declare const setInputInvalidChars: (inputDom: HTMLInputElement, invalidChars: string[], isInvalidPaste?: boolean) => void;
-declare type loaderParam = {
+type loaderParam = {
     zIndex?: string;
     showModal?: boolean;
     iconHtml?: string;
     text?: string;
     color?: string;
 };
-declare type loaderReturn = {
+type loaderReturn = {
     close: Function;
 };
 /**

@@ -25,7 +25,13 @@
 
 **Example**  
 ```js
-import http from "http";http.createServer(function (req, res) {  // 假如现在完整的访问url是 https://www.hello.com/other/path/images/icons/media.svg  // 那么，响应的本地文件路径为 /root/static/images/icons/media.svg  serveStatic("/root/static", "/other/path", req, res)}).listen(3000);
+import http from "http";
+
+http.createServer(function (req, res) {
+  // 假如现在完整的访问url是 https://www.hello.com/other/path/images/icons/media.svg
+  // 那么，响应的本地文件路径为 /root/static/images/icons/media.svg
+  serveStatic("/root/static", "/other/path", req, res)
+}).listen(3000);
 ```
 <a name="readRecursionFileList"></a>
 
