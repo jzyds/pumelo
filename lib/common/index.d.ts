@@ -251,7 +251,8 @@ export declare function isObjKey<T extends object>(key: any, obj: T): key is key
 export declare function uuidv4(): string;
 /**
  * Extract images from Markdown or HTML
- * @returns {{ src: string; alt: string }[]}
+ * @param {string} - content
+ * @returns { Array }
  */
 export declare function extractImages(content: string): {
     src: string;

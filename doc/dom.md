@@ -155,7 +155,8 @@ Check if the browser supports the webp format
 <a name="setBaseFontSizeByClientWidth"></a>
 
 ## setBaseFontSizeByClientWidth() ⇒ <code>void</code>
-Set the page root element font size,usually used in conjunction with rem
+Set the page root element font size,
+usually used in conjunction with rem
 
 **Kind**: global function  
 <a name="getUrlParam"></a>
@@ -191,19 +192,22 @@ Get current url param
 <a name="redirectHtml"></a>
 
 ## redirectHtml()
-重载页面不添加新的历史记录
+重载页面
+不添加新的历史记录
 
 **Kind**: global function  
 <a name="historyBackRefresh"></a>
 
 ## historyBackRefresh()
-返回上一页返回后刷新
+返回上一页
+返回后刷新
 
 **Kind**: global function  
 <a name="historyGo"></a>
 
 ## historyGo()
-返回历史记录返回后不刷新
+返回历史记录
+返回后不刷新
 
 **Kind**: global function  
 <a name="getOS_Type"></a>

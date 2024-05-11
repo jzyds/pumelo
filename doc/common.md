@@ -96,10 +96,9 @@
 <dd><p>生成随机数.</p>
 </dd>
 <dt><a href="#getOS_FromAgent">getOS_FromAgent(agent, maxTouchPoints)</a> ⇒ <code>availableOS_Type</code></dt>
-<dd><p>通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+<dd><h2 id="通过-user-agent-获取系统类型-方法可在服务端或浏览器调用-在服务器端传入-reqheadersuser-agent-在浏览器传入-navigatoruseragent">通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
 在服务器端传入 req.headers[&#39;user-agent&#39;]
-在浏览器传入 navigator.userAgent</p>
-<hr>
+在浏览器传入 navigator.userAgent</h2>
 <p>但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
 原因是新版本的 iPadOS(&gt;= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断</p>
 <p>在浏览器端，可直接调用 dom util 中的 getOS_Type</p>
@@ -108,6 +107,9 @@
 <dd></dd>
 <dt><a href="#uuidv4">uuidv4()</a> ⇒ <code>String</code></dt>
 <dd><p>Universally Unique IDentifier (RFC 4122 <a href="https://www.ietf.org/rfc/rfc4122.txt">https://www.ietf.org/rfc/rfc4122.txt</a>)</p>
+</dd>
+<dt><a href="#extractImages">extractImages(content)</a> ⇒ <code>Array</code></dt>
+<dd><p>Extract images from Markdown or HTML</p>
 </dd>
 </dl>
 
@@ -233,7 +235,11 @@ Update or create query string
 **Kind**: global function  
 **Example**  
 ```js
-flat()([ [1], [[2],[3]], [[4,[5]]]])
+flat()([
+ [1],
+ [[2],[3]],
+ [[4,[5]]]
+])
 ```
 <a name="timeDown"></a>
 
@@ -437,7 +443,8 @@ Measures the time taken by a function to execute.
 
 **Example**  
 ```js
-URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | tel | number | lower | upper | ip
+URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |
+email | phone | tel | number | lower | upper | ip
 ```
 <a name="randomNum"></a>
 
@@ -454,7 +461,14 @@ URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | t
 <a name="getOS_FromAgent"></a>
 
 ## getOS\_FromAgent(agent, maxTouchPoints) ⇒ <code>availableOS\_Type</code>
-通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用在服务器端传入 req.headers['user-agent']在浏览器传入 navigator.userAgent---------但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断原因是新版本的 iPadOS(>= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断在浏览器端，可直接调用 dom util 中的 getOS_Type
+通过 User Agent 获取系统类型, 方法可在服务端或浏览器调用
+在服务器端传入 req.headers['user-agent']
+在浏览器传入 navigator.userAgent
+---------
+但是如果想要区分 ipad 和 iphone，需要传入第二个参数，该参数只能在浏览器内获取（navigator.maxTouchPoints），所以只能在浏览器端判断
+原因是新版本的 iPadOS(>= 13.1) 和 mac 的 UA 是相同的，所以需要传入 maxTouchPoints 来判断
+
+在浏览器端，可直接调用 dom util 中的 getOS_Type
 
 **Kind**: global function  
 
@@ -479,3 +493,14 @@ URL_START_WITH_HTTP_OR_HTTPS | URL_NOT_REQUIRE_HTTP_OR_HTTPS |email | phone | t
 Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
 
 **Kind**: global function  
+<a name="extractImages"></a>
+
+## extractImages(content) ⇒ <code>Array</code>
+Extract images from Markdown or HTML
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| content | <code>string</code> | content |
+

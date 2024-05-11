@@ -712,7 +712,8 @@ export function uuidv4(): string {
 
 /**
  * Extract images from Markdown or HTML
- * @returns {{ src: string; alt: string }[]}
+ * @param {string} - content
+ * @returns { Array }
  */
 export function extractImages(content: string): { src: string; alt: string }[] {
   const regex =
