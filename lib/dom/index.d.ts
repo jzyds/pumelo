@@ -133,4 +133,12 @@ type loaderReturn = {
  * @returns { loaderReturn }
  */
 export declare function loader({ zIndex, showModal, iconHtml, text, color, }?: loaderParam): loaderReturn;
+/**
+ * Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and add IDs to headings without IDs.
+ * @param {Document} - contentDom
+ * @param {string} - queryTags
+ * @param {string} - tocItemPrefix
+ * @returns { HTMLDivElement | void }
+ */
+export declare function generateTableOfContents(contentDom?: Document, queryTags?: string, tocItemPrefix?: string): HTMLDivElement | void;
 export {};

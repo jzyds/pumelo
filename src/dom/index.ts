@@ -445,3 +445,40 @@ export function loader({
     },
   };
 }
+
+/**
+ * Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and add IDs to headings without IDs.
+ * @param {Document} - contentDom
+ * @param {string} - queryTags
+ * @param {string} - tocItemPrefix
+ * @returns { HTMLDivElement | void }
+ */
+export function generateTableOfContents(
+  contentDom?: Document,
+  queryTags = "h1, h2, h3, h4, h5, h6",
+  tocItemPrefix = `> `
+): HTMLDivElement | void {
+  const documentRef = contentDom || document;
+  const tocDom = document.createElement("div");
+  const headings = documentRef.querySelectorAll(queryTags);
+  if (!headings.length) {
+    return void 0;
+  }
+  Array.from(headings).forEach(function (heading, index) {
+    let ref = "toc" + index;
+    if (heading.hasAttribute("id")) {
+      ref = heading.getAttribute("id") as string;
+    } else {
+      heading.setAttribute("id", ref);
+    }
+
+    const div = tocDom.appendChild(documentRef.createElement("div"));
+    div.setAttribute("class", heading.tagName.toLowerCase());
+
+    const link = div.appendChild(documentRef.createElement("a"));
+    link.setAttribute("href", "#" + ref);
+    link.textContent = tocItemPrefix + heading.textContent;
+  });
+
+  return tocDom;
+}

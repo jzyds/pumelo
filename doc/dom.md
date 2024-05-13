@@ -65,6 +65,9 @@ usually used in conjunction with rem</p>
 <dt><a href="#loader">loader(param)</a> ⇒ <code>loaderReturn</code></dt>
 <dd><p>loader</p>
 </dd>
+<dt><a href="#generateTableOfContents">generateTableOfContents(contentDom, queryTags, tocItemPrefix)</a> ⇒ <code>HTMLDivElement</code> | <code>void</code></dt>
+<dd><p>Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and add IDs to headings without IDs.</p>
+</dd>
 </dl>
 
 <a name="loadVideo"></a>
@@ -245,4 +248,17 @@ loader
 | Param | Type |
 | --- | --- |
 | param | <code>loaderParam</code> | 
+
+<a name="generateTableOfContents"></a>
+
+## generateTableOfContents(contentDom, queryTags, tocItemPrefix) ⇒ <code>HTMLDivElement</code> \| <code>void</code>
+Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and add IDs to headings without IDs.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| contentDom | <code>Document</code> | contentDom |
+| queryTags | <code>string</code> | queryTags |
+| tocItemPrefix | <code>string</code> | tocItemPrefix |
 
