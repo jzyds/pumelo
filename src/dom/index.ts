@@ -482,3 +482,52 @@ export function generateTableOfContents(
 
   return tocDom;
 }
+
+/**
+ * Convert Blob To File
+ * @param {Blob} - blob
+ * @param {string} - fileName
+ * @returns { File}
+ */
+export function blobToFile(blob: Blob, fileName: string): File {
+  return new File([blob], fileName, {
+    lastModified: new Date().getTime(),
+    type: blob.type,
+  });
+}
+
+/**
+ * Convert dataURL To Blob
+ * @param {string} - dataurl
+ * @returns { Blob }
+ */
+export function dataURLtoBlob(dataurl: string): Blob | void {
+  const arr = dataurl.split(",");
+  if (arr.length > 0 && typeof arr[0] === "string") {
+    const mimeArray = arr[0].match(/:(.*?);/);
+    if (mimeArray && mimeArray.length > 0) {
+      const mime = mimeArray[1];
+      const bstr = window.atob(arr[1]);
+      let n = bstr.length;
+      const u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], { type: mime });
+    }
+  }
+}
+
+/**
+ * Convert Blob To dataURL
+ * @param {Blob} - blob
+ * @param {Function} - callback
+ * @returns { void }
+ */
+export function blobToDataURL(blob: Blob, callback: Function): void {
+  var a = new FileReader();
+  a.onload = function (e) {
+    e.target && callback(e.target.result);
+  };
+  a.readAsDataURL(blob);
+}

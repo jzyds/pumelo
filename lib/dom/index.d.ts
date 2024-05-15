@@ -141,4 +141,24 @@ export declare function loader({ zIndex, showModal, iconHtml, text, color, }?: l
  * @returns { HTMLDivElement | void }
  */
 export declare function generateTableOfContents(contentDom?: Document, queryTags?: string, tocItemPrefix?: string): HTMLDivElement | void;
+/**
+ * Convert Blob To File
+ * @param {Blob} - blob
+ * @param {string} - fileName
+ * @returns { File}
+ */
+export declare function blobToFile(blob: Blob, fileName: string): File;
+/**
+ * Convert dataURL To Blob
+ * @param {string} - dataurl
+ * @returns { Blob }
+ */
+export declare function dataURLtoBlob(dataurl: string): Blob | void;
+/**
+ * Convert Blob To dataURL
+ * @param {Blob} - blob
+ * @param {Function} - callback
+ * @returns { void }
+ */
+export declare function blobToDataURL(blob: Blob, callback: Function): void;
 export {};

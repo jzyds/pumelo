@@ -68,6 +68,15 @@ usually used in conjunction with rem</p>
 <dt><a href="#generateTableOfContents">generateTableOfContents(contentDom, queryTags, tocItemPrefix)</a> ⇒ <code>HTMLDivElement</code> | <code>void</code></dt>
 <dd><p>Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and add IDs to headings without IDs.</p>
 </dd>
+<dt><a href="#blobToFile">blobToFile(blob, fileName)</a> ⇒ <code>File</code></dt>
+<dd><p>Convert Blob To File</p>
+</dd>
+<dt><a href="#dataURLtoBlob">dataURLtoBlob(dataurl)</a> ⇒ <code>Blob</code></dt>
+<dd><p>Convert dataURL To Blob</p>
+</dd>
+<dt><a href="#blobToDataURL">blobToDataURL(blob, callback)</a> ⇒ <code>void</code></dt>
+<dd><p>Convert Blob To dataURL</p>
+</dd>
 </dl>
 
 <a name="loadVideo"></a>
@@ -261,4 +270,39 @@ Generate Table Of Contents(TOC) for document, Return the generated TOC DOM and a
 | contentDom | <code>Document</code> | contentDom |
 | queryTags | <code>string</code> | queryTags |
 | tocItemPrefix | <code>string</code> | tocItemPrefix |
+
+<a name="blobToFile"></a>
+
+## blobToFile(blob, fileName) ⇒ <code>File</code>
+Convert Blob To File
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| blob | <code>Blob</code> | blob |
+| fileName | <code>string</code> | fileName |
+
+<a name="dataURLtoBlob"></a>
+
+## dataURLtoBlob(dataurl) ⇒ <code>Blob</code>
+Convert dataURL To Blob
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| dataurl | <code>string</code> | dataurl |
+
+<a name="blobToDataURL"></a>
+
+## blobToDataURL(blob, callback) ⇒ <code>void</code>
+Convert Blob To dataURL
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| blob | <code>Blob</code> | blob |
+| callback | <code>function</code> | callback |
 
