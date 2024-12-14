@@ -711,28 +711,115 @@ export function uuidv4(): string {
 }
 
 /**
- * Extract images from Markdown or HTML
- * @param {string} - content
- * @returns { Array }
+ * Extracts image sources (`src`) and alternate texts (`alt`) from the given content.
+ *
+ * This function supports the following formats:
+ * 1. Markdown image syntax: `![alt](src)`
+ * 2. HTML image tag with `src` first: `<img src="src" alt="alt" />`
+ * 3. HTML image tag with `alt` first: `<img alt="alt" src="src" />`
+ *
+ * @param {string} content - The input string containing Markdown or HTML with images.
+ * @returns {Array<{ src: string, alt: string }>} An array of objects, each containing:
+ * - `src` (string): The image source URL.
+ * - `alt` (string): The alternate text for the image.
+ *
+ * @example
+ * // Import the module and call the function
+ * import * as pumelo from 'pumelo';
+ *
+ * const content = `
+ *   ![Alt text](image1.jpg)
+ *   <img src="image2.jpg" alt="Alt text 2" />
+ *   <img alt="Alt text 3" src="image3.jpg" />
+ * `;
+ *
+ * const images = pumelo.extractImages(content);
+ * console.log(images);
+ * // Output:
+ * // [
+ * //   { src: "image1.jpg", alt: "Alt text" },
+ * //   { src: "image2.jpg", alt: "Alt text 2" },
+ * //   { src: "image3.jpg", alt: "Alt text 3" }
+ * // ]
  */
 export function extractImages(content: string): { src: string; alt: string }[] {
   const regex =
-    /!\[(?<altText>.*)\]\s*\((?<imageURL>.+)\)|img\s*src="(?<imageURL1>[^"]*)"\s*alt="(?<altText1>[^"]*)" \/>|img\s*alt="(?<altText2>[^"]*)"\s*src="(?<imageURL2>[^"]*)" \/>/gm;
+    /!\[(.*)\]\s*\((.+)\)|img\s*src="([^"]*)"\s*alt="([^"]*)" \/>|img\s*alt="([^"]*)"\s*src="([^"]*)" \/>/gm;
 
   let list: RegExpExecArray | null;
   const images: { src: string; alt: string }[] = [];
+
   while ((list = regex.exec(content)) !== null) {
     if (list.index === regex.lastIndex) regex.lastIndex++;
-    if (list.groups) {
-      images.push({
-        alt:
-          list.groups.altText ?? list.groups.altText1 ?? list.groups.altText2,
-        src:
-          list.groups.imageURL ??
-          list.groups.imageURL1 ??
-          list.groups.imageURL2,
-      });
+
+    if (list[1] && list[2]) {
+      images.push({ alt: list[1], src: list[2] });
+    } else if (list[3] && list[4]) {
+      images.push({ alt: list[4], src: list[3] });
+    } else if (list[5] && list[6]) {
+      images.push({ alt: list[5], src: list[6] });
     }
   }
+
   return images;
+}
+
+enum ImageExtension {
+  JPG = "jpg",
+  PNG = "png",
+  GIF = "gif",
+  WEBP = "webp",
+  BMP = "bmp",
+  TIFF = "tiff",
+  SVG = "svg",
+  AVIF = "avif",
+  HEIC = "heic",
+  HEIF = "heif",
+  UNKNOWN = "unknown",
+}
+
+/**
+ * Returns the file extension corresponding to a given image MIME type.
+ * The return value is an enum representing the image extension.
+ *
+ * This function maps common image MIME types to their respective file extensions.
+ * If the MIME type is not recognized, it returns `ImageExtension.UNKNOWN`.
+ *
+ * @param {string} mimeType - The MIME type of the image (e.g., "image/jpeg", "image/png").
+ * @returns {ImageExtension} - The corresponding file extension enum value (e.g., `ImageExtension.JPG`, `ImageExtension.PNG`) or `ImageExtension.UNKNOWN` if the MIME type is unrecognized.
+ *
+ * @example
+ * // Returns ImageExtension.JPG
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/jpeg");
+ *
+ * @example
+ * // Returns ImageExtension.PNG
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/png");
+ *
+ * @example
+ * // Returns ImageExtension.UNKNOWN for unrecognized MIME type
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/unknown");
+ */
+export function getExtensionFromImageMimeType(
+  mimeType: string
+): ImageExtension {
+  // Define a MIME Type to Extension enum mapping
+  const mimeToExtensionMap: Record<string, ImageExtension> = {
+    "image/jpeg": ImageExtension.JPG,
+    "image/png": ImageExtension.PNG,
+    "image/gif": ImageExtension.GIF,
+    "image/webp": ImageExtension.WEBP,
+    "image/bmp": ImageExtension.BMP,
+    "image/tiff": ImageExtension.TIFF,
+    "image/svg+xml": ImageExtension.SVG,
+    "image/avif": ImageExtension.AVIF,
+    "image/heic": ImageExtension.HEIC,
+    "image/heif": ImageExtension.HEIF,
+  };
+
+  // Return the corresponding enum value or ImageExtension.UNKNOWN if not found
+  return mimeToExtensionMap[mimeType] || ImageExtension.UNKNOWN;
 }

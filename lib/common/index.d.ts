@@ -250,11 +250,78 @@ export declare function isObjKey<T extends object>(key: any, obj: T): key is key
  */
 export declare function uuidv4(): string;
 /**
- * Extract images from Markdown or HTML
- * @param {string} - content
- * @returns { Array }
+ * Extracts image sources (`src`) and alternate texts (`alt`) from the given content.
+ *
+ * This function supports the following formats:
+ * 1. Markdown image syntax: `![alt](src)`
+ * 2. HTML image tag with `src` first: `<img src="src" alt="alt" />`
+ * 3. HTML image tag with `alt` first: `<img alt="alt" src="src" />`
+ *
+ * @param {string} content - The input string containing Markdown or HTML with images.
+ * @returns {Array<{ src: string, alt: string }>} An array of objects, each containing:
+ * - `src` (string): The image source URL.
+ * - `alt` (string): The alternate text for the image.
+ *
+ * @example
+ * // Import the module and call the function
+ * import * as pumelo from 'pumelo';
+ *
+ * const content = `
+ *   ![Alt text](image1.jpg)
+ *   <img src="image2.jpg" alt="Alt text 2" />
+ *   <img alt="Alt text 3" src="image3.jpg" />
+ * `;
+ *
+ * const images = pumelo.extractImages(content);
+ * console.log(images);
+ * // Output:
+ * // [
+ * //   { src: "image1.jpg", alt: "Alt text" },
+ * //   { src: "image2.jpg", alt: "Alt text 2" },
+ * //   { src: "image3.jpg", alt: "Alt text 3" }
+ * // ]
  */
 export declare function extractImages(content: string): {
     src: string;
     alt: string;
 }[];
+declare enum ImageExtension {
+    JPG = "jpg",
+    PNG = "png",
+    GIF = "gif",
+    WEBP = "webp",
+    BMP = "bmp",
+    TIFF = "tiff",
+    SVG = "svg",
+    AVIF = "avif",
+    HEIC = "heic",
+    HEIF = "heif",
+    UNKNOWN = "unknown"
+}
+/**
+ * Returns the file extension corresponding to a given image MIME type.
+ * The return value is an enum representing the image extension.
+ *
+ * This function maps common image MIME types to their respective file extensions.
+ * If the MIME type is not recognized, it returns `ImageExtension.UNKNOWN`.
+ *
+ * @param {string} mimeType - The MIME type of the image (e.g., "image/jpeg", "image/png").
+ * @returns {ImageExtension} - The corresponding file extension enum value (e.g., `ImageExtension.JPG`, `ImageExtension.PNG`) or `ImageExtension.UNKNOWN` if the MIME type is unrecognized.
+ *
+ * @example
+ * // Returns ImageExtension.JPG
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/jpeg");
+ *
+ * @example
+ * // Returns ImageExtension.PNG
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/png");
+ *
+ * @example
+ * // Returns ImageExtension.UNKNOWN for unrecognized MIME type
+ * import * as pumelo from 'pumelo';
+ * pumelo.getExtensionFromImageMimeType("image/unknown");
+ */
+export declare function getExtensionFromImageMimeType(mimeType: string): ImageExtension;
+export {};

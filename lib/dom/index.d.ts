@@ -1,5 +1,15 @@
 import Cookies from "js-cookie";
 import { availableOS_Type } from "../common";
+type CreateProgressPopupReturn = {
+    updateProgress: (percent: number) => void;
+    closeProgressPopup: () => void;
+};
+/**
+ * Displays a progress bar popup.
+ * @param {String} titleText - The text to display as the popup title.
+ * @returns {CreateProgressPopupReturn} Includes the `updateProgress` function to update the progress bar and the `closeProgressPopup` function to close the popup.
+ */
+export declare function createProgressPopup(titleText?: string): CreateProgressPopupReturn;
 /**
  * load file info from local
  * @param {File} file

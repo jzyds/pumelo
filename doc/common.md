@@ -108,8 +108,20 @@
 <dt><a href="#uuidv4">uuidv4()</a> ⇒ <code>String</code></dt>
 <dd><p>Universally Unique IDentifier (RFC 4122 <a href="https://www.ietf.org/rfc/rfc4122.txt">https://www.ietf.org/rfc/rfc4122.txt</a>)</p>
 </dd>
-<dt><a href="#extractImages">extractImages(content)</a> ⇒ <code>Array</code></dt>
-<dd><p>Extract images from Markdown or HTML</p>
+<dt><a href="#extractImages">extractImages(content)</a> ⇒ <code>Array.&lt;{src: string, alt: string}&gt;</code></dt>
+<dd><p>Extracts image sources (<code>src</code>) and alternate texts (<code>alt</code>) from the given content.</p>
+<p>This function supports the following formats:</p>
+<ol>
+<li>Markdown image syntax: <code>![alt](src)</code></li>
+<li>HTML image tag with <code>src</code> first: <code>&lt;img src=&quot;src&quot; alt=&quot;alt&quot; /&gt;</code></li>
+<li>HTML image tag with <code>alt</code> first: <code>&lt;img alt=&quot;alt&quot; src=&quot;src&quot; /&gt;</code></li>
+</ol>
+</dd>
+<dt><a href="#getExtensionFromImageMimeType">getExtensionFromImageMimeType(mimeType)</a> ⇒ <code>ImageExtension</code></dt>
+<dd><p>Returns the file extension corresponding to a given image MIME type.
+The return value is an enum representing the image extension.</p>
+<p>This function maps common image MIME types to their respective file extensions.
+If the MIME type is not recognized, it returns <code>ImageExtension.UNKNOWN</code>.</p>
 </dd>
 </dl>
 
@@ -495,12 +507,74 @@ Universally Unique IDentifier (RFC 4122 https://www.ietf.org/rfc/rfc4122.txt)
 **Kind**: global function  
 <a name="extractImages"></a>
 
-## extractImages(content) ⇒ <code>Array</code>
-Extract images from Markdown or HTML
+## extractImages(content) ⇒ <code>Array.&lt;{src: string, alt: string}&gt;</code>
+Extracts image sources (`src`) and alternate texts (`alt`) from the given content.
+
+This function supports the following formats:
+1. Markdown image syntax: `![alt](src)`
+2. HTML image tag with `src` first: `<img src="src" alt="alt" />`
+3. HTML image tag with `alt` first: `<img alt="alt" src="src" />`
 
 **Kind**: global function  
+**Returns**: <code>Array.&lt;{src: string, alt: string}&gt;</code> - An array of objects, each containing:
+- `src` (string): The image source URL.
+- `alt` (string): The alternate text for the image.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| content | <code>string</code> | content |
+| content | <code>string</code> | The input string containing Markdown or HTML with images. |
 
+**Example**  
+```js
+// Import the module and call the function
+import * as pumelo from 'pumelo';
+
+const content = `
+  ![Alt text](image1.jpg)
+  <img src="image2.jpg" alt="Alt text 2" />
+  <img alt="Alt text 3" src="image3.jpg" />
+`;
+
+const images = pumelo.extractImages(content);
+console.log(images);
+// Output:
+// [
+//   { src: "image1.jpg", alt: "Alt text" },
+//   { src: "image2.jpg", alt: "Alt text 2" },
+//   { src: "image3.jpg", alt: "Alt text 3" }
+// ]
+```
+<a name="getExtensionFromImageMimeType"></a>
+
+## getExtensionFromImageMimeType(mimeType) ⇒ <code>ImageExtension</code>
+Returns the file extension corresponding to a given image MIME type.
+The return value is an enum representing the image extension.
+
+This function maps common image MIME types to their respective file extensions.
+If the MIME type is not recognized, it returns `ImageExtension.UNKNOWN`.
+
+**Kind**: global function  
+**Returns**: <code>ImageExtension</code> - - The corresponding file extension enum value (e.g., `ImageExtension.JPG`, `ImageExtension.PNG`) or `ImageExtension.UNKNOWN` if the MIME type is unrecognized.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| mimeType | <code>string</code> | The MIME type of the image (e.g., "image/jpeg", "image/png"). |
+
+**Example**  
+```js
+// Returns ImageExtension.JPG
+import * as pumelo from 'pumelo';
+pumelo.getExtensionFromImageMimeType("image/jpeg");
+```
+**Example**  
+```js
+// Returns ImageExtension.PNG
+import * as pumelo from 'pumelo';
+pumelo.getExtensionFromImageMimeType("image/png");
+```
+**Example**  
+```js
+// Returns ImageExtension.UNKNOWN for unrecognized MIME type
+import * as pumelo from 'pumelo';
+pumelo.getExtensionFromImageMimeType("image/unknown");
+```

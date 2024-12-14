@@ -1,6 +1,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#mkdirSyncIfNotExists">mkdirSyncIfNotExists(path, [recursive])</a> ⇒ <code>void</code></dt>
+<dd><p>Creates a directory synchronously if it does not already exist.</p>
+</dd>
 <dt><a href="#serveStatic">serveStatic(folder, base_path, req, res)</a> ⇒ <code>void</code></dt>
 <dd><p>静态文件服务</p>
 </dd>
@@ -9,6 +12,35 @@
 </dd>
 </dl>
 
+<a name="mkdirSyncIfNotExists"></a>
+
+## mkdirSyncIfNotExists(path, [recursive]) ⇒ <code>void</code>
+Creates a directory synchronously if it does not already exist.
+
+**Kind**: global function  
+**Returns**: <code>void</code> - - This function does not return anything.  
+**Throws**:
+
+- <code>Error</code> - Logs an error to the console if the directory cannot be created.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| path | <code>string</code> |  | The path of the directory to create. |
+| [recursive] | <code>boolean</code> | <code>true</code> | Whether to create parent directories if they do not exist. Defaults to `true`. |
+
+**Example**  
+```js
+// Creates a directory at './example' if it doesn't exist
+import * as pumeloNode from 'pumelo/lib/node';
+pumeloNode.mkdirSyncIfNotExists('./example');
+```
+**Example**  
+```js
+// Creates a directory and necessary parent directories
+import * as pumeloNode from 'pumelo/lib/node';
+pumeloNode.mkdirSyncIfNotExists('./nested/example', true);
+```
 <a name="serveStatic"></a>
 
 ## serveStatic(folder, base_path, req, res) ⇒ <code>void</code>

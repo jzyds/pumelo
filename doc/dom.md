@@ -1,6 +1,9 @@
 ## Functions
 
 <dl>
+<dt><a href="#createProgressPopup">createProgressPopup(titleText)</a> ⇒ <code>CreateProgressPopupReturn</code></dt>
+<dd><p>Displays a progress bar popup.</p>
+</dd>
 <dt><a href="#loadVideo">loadVideo(file)</a> ⇒ <code>Promise</code></dt>
 <dd><p>load file info from local</p>
 </dd>
@@ -78,6 +81,18 @@ usually used in conjunction with rem</p>
 <dd><p>Convert Blob To dataURL</p>
 </dd>
 </dl>
+
+<a name="createProgressPopup"></a>
+
+## createProgressPopup(titleText) ⇒ <code>CreateProgressPopupReturn</code>
+Displays a progress bar popup.
+
+**Kind**: global function  
+**Returns**: <code>CreateProgressPopupReturn</code> - Includes the `updateProgress` function to update the progress bar and the `closeProgressPopup` function to close the popup.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| titleText | <code>String</code> | The text to display as the popup title. |
 
 <a name="loadVideo"></a>
 

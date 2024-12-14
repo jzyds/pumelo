@@ -1,5 +1,85 @@
 import Cookies from "js-cookie";
-import { availableOS_Type, getOS_FromAgent } from "../common";
+import { availableOS_Type, getOS_FromAgent, uuidv4 } from "../common";
+
+type CreateProgressPopupReturn = {
+  updateProgress: (percent: number) => void;
+  closeProgressPopup: () => void;
+};
+
+/**
+ * Displays a progress bar popup.
+ * @param {String} titleText - The text to display as the popup title.
+ * @returns {CreateProgressPopupReturn} Includes the `updateProgress` function to update the progress bar and the `closeProgressPopup` function to close the popup.
+ */
+export function createProgressPopup(
+  titleText = "Downloading..."
+): CreateProgressPopupReturn {
+  const progressPopupId = `progressPopup-${uuidv4()}`; // 随机生成ID
+
+  // 动态创建进度弹出框
+  const popup = document.createElement("div");
+  popup.id = progressPopupId;
+  Object.assign(popup.style, {
+    position: "fixed",
+    top: "10px",
+    right: "10px",
+    width: "300px",
+    background: "#fff",
+    border: "1px solid #ccc",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+    borderRadius: "5px",
+    padding: "15px",
+    zIndex: "1000",
+  });
+
+  // 添加标题
+  const title = document.createElement("h3");
+  title.innerText = titleText;
+  title.style.margin = "0";
+  title.style.fontSize = "16px";
+  popup.appendChild(title);
+
+  // 添加关闭按钮
+  const closeButton = document.createElement("button");
+  closeButton.innerText = "×";
+  Object.assign(closeButton.style, {
+    position: "absolute",
+    top: "5px",
+    right: "10px",
+    background: "none",
+    border: "none",
+    fontSize: "16px",
+    cursor: "pointer",
+  });
+  closeButton.addEventListener("click", () => {
+    document.body.removeChild(popup);
+  });
+  popup.appendChild(closeButton);
+
+  // 添加进度条
+  const progressBar = document.createElement("progress");
+  progressBar.value = 0;
+  progressBar.max = 100;
+  Object.assign(progressBar.style, {
+    width: "100%",
+    height: "10px",
+    marginTop: "10px",
+  });
+  popup.appendChild(progressBar);
+
+  // 将弹出框添加到页面
+  document.body.appendChild(popup);
+
+  // 返回更新和销毁方法
+  return {
+    updateProgress: (percent: number) => {
+      progressBar.value = percent;
+    },
+    closeProgressPopup: () => {
+      document.body.removeChild(popup);
+    },
+  };
+}
 
 /**
  * load file info from local
